@@ -34,7 +34,7 @@ POST /v2/va/channels/register
 
 
 
-#### Sample
+<!-- #### Sample
 ##### Request
 ```
 {
@@ -51,8 +51,9 @@ POST /v2/va/channels/register
     "name": "cam01",
     "status": "OK"
 }
-```
+``` -->
 
+<br><br>
 
 ### 채널 목록보기
 전체 채널 상세정보를 조회합니다.
@@ -71,7 +72,7 @@ POST /v2/va/channels/list
 | name | String | 채널 별칭 |
 | status | String | 채널 상태 |
 
-#### Sample
+<!-- #### Sample
 
 ##### Response
 ```
@@ -89,8 +90,9 @@ POST /v2/va/channels/list
         "status": "CANNOT ACCESS RTSP VIDEO SOURCE"
     }
 }
-```
+``` -->
 
+<br><br>
 
 ### 채널 보기
 채널의 상세 정보를 조회합니다.
@@ -109,7 +111,7 @@ POST /v2/va/channels/{channel_id}
 | status | String | 채널 상태 |
 
 
-#### Sample
+<!-- #### Sample
 ##### Response
 
 ```
@@ -119,7 +121,9 @@ POST /v2/va/channels/{channel_id}
     "name": "cam01",
     "status": "OK"
 }
-```
+``` -->
+
+<br><br>
 
 ### 채널 수정하기
 채널의 정보를 수정합니다.
@@ -147,11 +151,12 @@ POST /v2/va/channels/modify/{channel_id}
 
 
 
-#### Sample
+<!-- #### Sample
 ##### Request
 ```
+POST /v2/va/channels/modify/X1ashF0t
+
 {
-    "channel_id": "X1ashF0t",
     "input_uri": "rtsp://admin:password@192.168.0.101:554/live",
     "name": "cam03"
 }
@@ -165,9 +170,10 @@ POST /v2/va/channels/modify/{channel_id}
     "name": "cam03",
     "status": "OK"
 }
-```
+``` -->
 
 
+<br><br>
 
 ### 카메라 캘리브레이션
 
@@ -177,8 +183,10 @@ POST /v2/va/channels/{channel_id}/callibration
 
 
 #### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
+| channel_id | String | 채널 ID | O |
 | distortion_points | [DistortionPoint] | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 | O |
 | calibration_points | [CalibrationPoint] | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 | O |
 

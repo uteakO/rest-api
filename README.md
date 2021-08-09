@@ -71,3 +71,8 @@ abnormal_ci	Double	영역 ROI 내 이동흐름 정체: 정체도 기준값
 ```
   - 검출항목에 특화된 설정이 향후 발생할 여지가 높으므로, 검출항목별로 config 항목을 개별 정의
      - 참고: [Google cloud video intelligence API](https://cloud.google.com/video-intelligence/docs/reference/rest/v1p3beta1/videos/annotate#videocontext)
+
+- 진입/진출 등 카운트 리셋이 개별로, 채널단위 전체리셋으로 필요한가?
+- 분석결과 출력 시 아래 중 어느 것이 더 쓸모있는가?
+   - ROI 단위로 이벤트를 모아서 출력
+   - 현재처럼 검출항목 단위로 모아서 출력하고, 각 검출결과에 ROI id를 첨부해주는 것
