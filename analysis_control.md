@@ -107,7 +107,7 @@ POST /v2/va/channels/{channel_id}/analysis/register
 | channel_id | String | 채널 ID | O |
 | event_type | enum([EventType](classes.md#EventType)) | 이벤트 타입 | O |
 | description | String | 이벤트 설명 | X |
-| configs | [AnalysisConfigs] | 이벤트 설명 | X |
+| configs | {AnalysisConfigs} | 이벤트 설명 | X |
 
 <br><br>
 ----------------
