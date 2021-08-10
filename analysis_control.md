@@ -1,126 +1,120 @@
 비디오 분석 설정에 대한 API입니다.
 
 ------------------------
-# 비디오 분석 상태 제어
-### 비디오 분석 시작
-
+# 비디오 분석 제어
+이 API를 이용하여 지정 채널에 대해 비디오 분석을 시작하거나 중지할 수 있습니다.
+또한, ROI 영역의 검출객체 카운팅 상태들을 초기화할 수 있습니다.
 ```
-POST /v2/va/channels/start-analysis
-```
-
-#### Request
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
-
-<br><br>
-### 비디오 분석 중지
-
-```
-POST /v2/va/channels/stop-analysis
+POST /v2/va/control
 ```
 
 #### Request
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
+| channelId | String | 채널 ID | O |
+| operation | [[Operations](#enum-operations)] | 제어 명령 | O |
+
+
+#### Enum Operations
+
+| Enum | Description |
+| :---- | :---- |
+| VA_START | 비디오 분석 시작 |
+| VA_STOP | 비디오 분석 중지 |
+| ROI_RST_ENTER | 진입 카운트 초기화 |
+| ROI_RST_EXIT | 진출 카운트 초기화 |
+| ROI_RST_PASS | 통과 카운트 초기화 |
+| ROI_RST_AVG_STAYING_TIME | 평균 대기 시간 초기화 |
+| ROI_RST_ALL | 전체 초기화 |
+
+
+
 
 <br><br>
+# ROI 설정
 
-# 누적 값 초기화
-
-채널 내 설정 된 ROI들에 대해, 현재까지 검출 된 객체들의 누적 값을 초기화 시키는 기능입니다.
-
-### 진입 카운트 초기화
-
+## ROI 생성
+지정한 채널에 대해 ROI 영역을 정의하고, 분석 알고리즘을 설정합니다.
 ```
-POST /v2/va/channels/reset-enter-count
+POST /v2/va/create-roi
 ```
 
-#### Request
+### Request
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
+| channelId | string | 채널 ID | O |
+| description | string | 설명 | X |
+| points | [Double] | ROI 좌표 리스트 (0.0~1.0으로 정규화) | O |
+| analysisConfigs | object ([AnalysisConfig](#analysisconfigs)) | 분석 설정 | X |
 
-<br><br>
-### 진출 카운트 초기화
-
+#### JSON sample
 ```
-POST /v2/va/channels/reset-exit-count
+{
+    "channelId": "X1ashF0t",
+    "analysisType": "EVT_LOITERING",
+    "description": "Loitering and intrusion detection for CCTV #3",
+    "roi": [0.2, 0.2, 0, 0.5, 0.7, 0.1],
+    "analysisConfigs": {
+        "loiteringConfig": {
+            abnormalStayTime: 1.0,
+            abnormalCi: 1.0
+        },
+        "intrusionConfig": {
+            abnormalStayTime: 1.0,
+            abnormalCi: 1.0
+        }
+    }
+}
 ```
+<br>
 
-#### Request
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
+### Response
+| Name | Type | Description |
+| :---- | :---- |:---- |
+| roiId | String | ROI ID |
 
-<br><br>
-### 통과 카운트 초기화
-
+#### JSON sample
 ```
-POST /v2/va/channels/reset-pass-count
-```
-
-#### Request
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
-
-
-<br><br>
-### 평균 대기 시간 초기화
-
-```
-POST /v2/va/channels/reset-average-staying-time
-```
-
-#### Request
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
-
-<br><br>
-### 전체 초기화
-
-```
-POST /v2/va/channels/reset-all
+{
+    "roiId": "Vif7f02j"
+}
 ```
 
-#### Request
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
+
 
 
 <br><br>
 
 
-# 비디오 분석 기능 설정
-
-```
-POST /v2/va/channels/{channel_id}/analysis/register
-```
 
 
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
-| event_type | enum([EventType](classes.md#EventType)) | 이벤트 타입 | O |
-| description | String | 이벤트 설명 | X |
-| configs | {AnalysisConfigs} | 이벤트 설명 | X |
 
-<br><br>
+
 ----------------
 # AnalysisConfigs
 
+#### JSON 표현
+
+```
+{
+    "loiteringConfig": object (LoiteringConfig),
+    "intrusionConfig": object (IntrusionConfig)
+}
+```
+
+| Name | Type | Description | Required |
+| :---- | :---- |:---- |:---- |
+| loiteringConfig | object (LoiteringConfig) | 배회 감지 설정 | X |
+
+
+<br><br>
 ## 일반 분석 설정
 ### LoiteringConfig
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| roi | [Double] | ROI 좌표 리스트 (0.0~1.0으로 정규화) | O |
-| abnormal_stay_time | Double | 배회 감지 시간 | O |
-| abnormal_ci | Double | 영역 ROI 내 이동흐름 정체: 정체도 기준값 | O |
+| abnormalStayTime | Double | 배회 감지 시간 | O |
+| abnormalCi | Double | 영역 ROI 내 이동흐름 정체: 정체도 기준값 | O |
 
 
 ### IntrusionConfig

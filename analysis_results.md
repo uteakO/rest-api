@@ -3,3 +3,6 @@
 ------------------------
 # 비디오 분석 결과
 
+| Name | Type | Description |
+| :---- | :---- |:---- |
+| channelId | String | 채널 ID |

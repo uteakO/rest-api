@@ -8,15 +8,15 @@ POST /v2/va/get-system-info
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| server_id | String | 서버 UUID |
-| product_code | String | 제품 코드 |
-| product_version | String | 제품 버전 |
+| serverId | String | 서버 UUID |
+| productCode | String | 제품 코드 |
+| productVersion | String | 제품 버전 |
 | description | String | 제품 설명 |
-| license_validity | Bool | 라이센스 유효 여부 |
-| license_expired | String | 라이센스 만료일(YYYY-MM-DD) |
+| licenseValidity | Bool | 라이센스 유효 여부 |
+| licenseExpired | String | 라이센스 만료일(YYYY-MM-DD) |
 | features | [EventType] | 현재 라이센스에서 사용 가능한 이벤트타입 목록 |
-| state_is_normal | Bool | 시스템 상태가 정상인지 유무 |
-| error_detail | [SystemStatus] | 오류 상태 목록 |
+| stateIsNormal | Bool | 시스템 상태가 정상인지 유무 |
+| errorDetail | [SystemStatus] | 오류 상태 목록 |
 
 
 
@@ -30,9 +30,9 @@ POST /v2/va/get-system-errors
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| server_id | String | 서버 UUID |
-| state_is_normal | Bool | 시스템 상태가 정상인지 유무 |
-| error_detail | [SystemStatus] | 오류 상태 목록 |
+| systemDeviceId | String | 장치 ID |
+| stateIsNormal | Bool | 시스템 상태가 정상인지 유무 |
+| errorDetail | [SystemStatus] | 오류 상태 목록 |
 
 
 

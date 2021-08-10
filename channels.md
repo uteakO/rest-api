@@ -5,26 +5,26 @@
 ### 채널 등록하기
 
 ```
-POST /v2/va/channels/register
+POST /v2/va/create-channel
 ```
 
 
 #### Request
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| input_uri | String | 입력 비디오 URI (RTSP 주소 또는 로컬파일 경로) | X |
-| name | String | 채널 별칭 | X |
-| input_device_type | enum([DeviceType](classes.md#DeviceType)) | 입력장치 타입| X |
+| inputUri | String | 입력 비디오 URI (RTSP 주소 또는 로컬파일 경로) | X |
+| channelName | String | 채널 별칭 | X |
+| inputDeviceType | enum([DeviceType](classes.md#DeviceType)) | 입력장치 타입| X |
 | siblings | [String] | 연결된 채널 id 목록 | X |
 
 
 #### Response
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| channel_id | String | 채널 ID |
-| input_uri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
+| channelId | String | 채널 ID |
+| inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
 | name | String | 채널 별칭 |
-| input_device_type | enum([DeviceType](classes.md#DeviceType)) | 입력장치 타입 |
+| inputDeviceType | enum([DeviceType](classes.md#DeviceType)) | 입력장치 타입 |
 | siblings | [String] | 연결된 채널 id 목록 |
 | status | String | 채널 상태 |
 
@@ -38,7 +38,7 @@ POST /v2/va/channels/register
 ##### Request
 ```
 {
-    "input_uri": "rtsp://admin:password@192.168.0.100:554/live",
+    "inputUri": "rtsp://admin:password@192.168.0.100:554/live",
     "name": "cam01"
 }
 ```
@@ -46,8 +46,8 @@ POST /v2/va/channels/register
 ##### Response
 ```
 {
-    "channel_id": "X1ashF0t",
-    "input_uri": "rtsp://admin:password@192.168.0.100:554/live",
+    "channelId": "X1ashF0t",
+    "inputUri": "rtsp://admin:password@192.168.0.100:554/live",
     "name": "cam01",
     "status": "OK"
 }
@@ -59,7 +59,7 @@ POST /v2/va/channels/register
 전체 채널 상세정보를 조회합니다.
 
 ```
-POST /v2/va/channels/list
+POST /v2/va/list-channels
 ```
 
 
@@ -67,8 +67,8 @@ POST /v2/va/channels/list
 #### Response
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| channel_id | String | 채널 ID |
-| input_uri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
+| channelId | String | 채널 ID |
+| inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
 | name | String | 채널 별칭 |
 | status | String | 채널 상태 |
 
@@ -78,14 +78,14 @@ POST /v2/va/channels/list
 ```
 {
     {
-        "channel_id": "X1ashF0t",
-        "input_uri": "rtsp://admin:password@192.168.0.100:554/live",
+        "channelId": "X1ashF0t",
+        "inputUri": "rtsp://admin:password@192.168.0.100:554/live",
         "name": "cam01",
         "status": "OK"
     },
     {
-        "channel_id": "aAdjbu39",
-        "input_uri": "rtsp://admin:password@192.168.0.101:554/live",
+        "channelId": "aAdjbu39",
+        "inputUri": "rtsp://admin:password@192.168.0.101:554/live",
         "name": "cam02",
         "status": "CANNOT ACCESS RTSP VIDEO SOURCE"
     }
@@ -98,15 +98,15 @@ POST /v2/va/channels/list
 채널의 상세 정보를 조회합니다.
 
 ```
-POST /v2/va/channels/{channel_id}
+POST /v2/va/get-channel
 ```
 
 
 #### Response
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| channel_id | String | 채널 ID |
-| input_uri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
+| channelId | String | 채널 ID |
+| inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
 | name | String | 채널 별칭 |
 | status | String | 채널 상태 |
 
@@ -116,8 +116,8 @@ POST /v2/va/channels/{channel_id}
 
 ```
 {
-    "channel_id": "X1ashF0t",
-    "input_uri": "rtsp://admin:password@192.168.0.100:554/live",
+    "channelId": "X1ashF0t",
+    "inputUri": "rtsp://admin:password@192.168.0.100:554/live",
     "name": "cam01",
     "status": "OK"
 }
@@ -129,22 +129,22 @@ POST /v2/va/channels/{channel_id}
 채널의 정보를 수정합니다.
 
 ```
-POST /v2/va/channels/modify/{channel_id}
+POST /v2/va/update-channel
 ```
 
 #### Request
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
-| input_uri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) | X |
+| channelId | String | 채널 ID | O |
+| inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) | X |
 | name | String | 채널 별칭 | X |
 
 
 #### Response
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| channel_id | String | 채널 ID |
-| input_uri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
+| channelId | String | 채널 ID |
+| inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
 | name | String | 채널 별칭 |
 | status | String | 채널 상태 |
 
@@ -157,7 +157,7 @@ POST /v2/va/channels/modify/{channel_id}
 POST /v2/va/channels/modify/X1ashF0t
 
 {
-    "input_uri": "rtsp://admin:password@192.168.0.101:554/live",
+    "inputUri": "rtsp://admin:password@192.168.0.101:554/live",
     "name": "cam03"
 }
 ```
@@ -165,8 +165,8 @@ POST /v2/va/channels/modify/X1ashF0t
 ##### Response
 ```
 {
-    "channel_id": "X1ashF0t",
-    "input_uri": "rtsp://admin:password@192.168.0.101:554/live",
+    "channelId": "X1ashF0t",
+    "inputUri": "rtsp://admin:password@192.168.0.101:554/live",
     "name": "cam03",
     "status": "OK"
 }
@@ -178,7 +178,7 @@ POST /v2/va/channels/modify/X1ashF0t
 ### 카메라 캘리브레이션
 
 ```
-POST /v2/va/channels/{channel_id}/callibration
+POST /v2/va/callibrate
 ```
 
 
@@ -186,9 +186,9 @@ POST /v2/va/channels/{channel_id}/callibration
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
-| distortion_points | [DistortionPoint] | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 | O |
-| calibration_points | [CalibrationPoint] | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 | O |
+| channelId | String | 채널 ID | O |
+| distortionPoints | [DistortionPoint] | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 | O |
+| calibrationPoints | [CalibrationPoint] | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 | O |
 
 
 
@@ -196,16 +196,16 @@ POST /v2/va/channels/{channel_id}/callibration
 #### DistortionPoint
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| start_point | [Integer] |  첫 번째 점의 X, Y 좌표 | O |
-| middle_point | [Integer] |  중간 점의 X, Y 좌표 | O |
-| end_point | [Integer] |  마지막 점의 X, Y 좌표 | O |
+| startPoint | [Integer] |  첫 번째 점의 X, Y 좌표 | O |
+| middlePoint | [Integer] |  중간 점의 X, Y 좌표 | O |
+| endPoint | [Integer] |  마지막 점의 X, Y 좌표 | O |
 
 
 
 #### CalibrationPoint
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| vertical_point_1 | [Integer] |  세로로 된 직선 1의 시작, 끝 X, Y 좌표 | O |
-| vertical_point_2 | [Integer] |  세로로 된 직선 2의 시작, 끝 X, Y 좌표 | O |
-| horizontal_point_1 | [Integer] |  가로로 된 직선 1의 시작, 끝 X, Y 좌표 | O |
-| horizontal_point_2 | [Integer] |  가로로 된 직선 2의 시작, 끝 X, Y 좌표 | O |
+| verticalPoint1 | [Integer] |  세로로 된 직선 1의 시작, 끝 X, Y 좌표 | O |
+| verticalPoint2 | [Integer] |  세로로 된 직선 2의 시작, 끝 X, Y 좌표 | O |
+| horizontalPoint1 | [Integer] |  가로로 된 직선 1의 시작, 끝 X, Y 좌표 | O |
+| horizontalPoint2 | [Integer] |  가로로 된 직선 2의 시작, 끝 X, Y 좌표 | O |

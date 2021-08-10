@@ -2,15 +2,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 ------------------------
 
-### ROI configs
 
-
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| channel_id | String | 채널 ID | O |
-| event_type | enum(EventType) | 이벤트 타입 | O |
-| description | String | 이벤트 설명 | X |
-| config | String | 이벤트 설명 | X |
 
 
 
