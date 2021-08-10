@@ -2,12 +2,28 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 ------------------------
 
+### Channel Model
+| Name | Type | Description |
+| :---- | :---- |:---- |
+| channelId | String | 채널 ID |
+| nodeId | String | 컴퓨팅 노드 ID | X |
+| inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
+| channelName | String | 채널 별칭 |
+| inputDeviceType | enum([InputType](models.md#inputtype)) | 입력장치 타입|
+| siblings | [String] | 연결된 채널 id 목록 |
+| status | enum([ChannelStatus](#channelstatus)) | 채널 상태 |
 
+<br><br>
 
+### ChannelStatus
 
+| Enum | Description |
+| :---- | :---- |
+| CH_STATUS_NORMAL | 정상 |
+| CH_STATUS_INPUT_DEVICE_CONNECTION_LOST | 입력장치 연결 끊김 |
+| CH_STATUS_INPUT_DEVICE_CONNECTION_LOST | 입력장치 연결 끊김 |
 
-
-
+<br><br>
 
 ### EventType
 
@@ -31,13 +47,22 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 | EVT_TRAFFIC_ACTUATED_SIGNAL | 교통 감응신호 (rs232 통신으로 옵션보드로 차량 유무 신호 전송) |
 | EVT_CROSSWALK_QUEUEING | 횡단보도 대기열 카운팅 |
 
+<br><br>
 
-
-### DeviceType
+### InputType
 
 | Enum | Description |
 | :---- | :---- |
-| IPCAM_NORMAL | 일반 카메라 (Default)|
-| IPCAM_THERMAL | 열화상 카메라 |
-| IPCAM_DEPTH | 깊이센서 카메라 |
-| ETC | 기타 장치 |
+| SRC_IPCAM_NORMAL | 일반 카메라 (Default) 영상 |
+| SRC_IPCAM_THERMAL | 열화상 카메라 영상 |
+| SRC_IPCAM_DEPTH | 깊이센서 카메라 영상 |
+| SRC_ETC | 기타 영상 |
+
+<br><br>
+
+### RecentCrashLogs
+
+| Name | Type | Description |
+| :---- | :---- |:---- |
+| nodeId | String | 컴퓨팅 노드 ID |
+| crashTime | String | 비정상 종료 시각 |

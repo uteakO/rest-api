@@ -3,6 +3,4 @@
 ------------------------
 # 비디오 분석 결과
 
-| Name | Type | Description |
-| :---- | :---- |:---- |
-| channelId | String | 채널 ID |
+<!-- 여기에 분석결과 출력 gRPC API 스펙 작성 예정 -->
