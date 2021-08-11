@@ -115,7 +115,7 @@ POST /v2/va/list-channels
 
 ### Response
 
-[Channel Model](models#channel-model)의 배열을 반환합니다.
+[Channel Model](models#channel-model.md)의 배열을 반환합니다.
 
 
 <br><br>
