@@ -3,11 +3,11 @@
 <!-- * [Introduction](README.md) -->
 
 __목차__
-* [채널](channels)
-* [비디오 분석 제어](va_control)
-* [시스템](system)
-* [모델](models)
-* [영상 분석 결과](va_results)
+* [채널](channels.md)
+* [비디오 분석 제어](va_control.md)
+* [시스템](system.md)
+* [모델](models.md)
+* [영상 분석 결과](va_results.md)
 
 
 
