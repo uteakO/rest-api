@@ -134,7 +134,7 @@ POST /v2/va/update-channel
 | channelId | String | 채널 ID | O |
 | nodeId | String | 컴퓨팅 노드 ID | X |
 | inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) | X |
-| name | String | 채널 별칭 | X |
+| channelName | String | 채널 별칭 | X |
 
 <br>
 
