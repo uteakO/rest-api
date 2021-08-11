@@ -287,8 +287,6 @@ POST /v2/va/snapshot
 | :---- | :---- |:---- |
 | channelId | String | 채널 ID |
 | imageData | String | 카메라 스틸컷 데이터 (jpeg -> base64인코딩) |
-| imageWidth | Integer | 가로 해상도 |
-| imageHeight | Integer | 세로 해상도 |
 
 
 <br>
