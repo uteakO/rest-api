@@ -30,9 +30,7 @@ POST /v2/va/control
 | :---- | :---- |
 | VA_START | 비디오 분석 시작 |
 | VA_STOP | 비디오 분석 중지 |
-| ROI_RST_ENTER | 진입 카운트 초기화 |
-| ROI_RST_EXIT | 진출 카운트 초기화 |
-| ROI_RST_PASS | 통과 카운트 초기화 |
+| ROI_RST_COUNT | 이벤트 카운트 초기화 |
 | ROI_RST_AVG_STAYING_TIME | 평균 대기 시간 초기화 |
 | ROI_RST_ALL | 전체 초기화 |
 
