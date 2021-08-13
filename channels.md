@@ -107,9 +107,9 @@ POST /v2/va/get-channel
 ### Response
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| channel | [Channel Model](models.md#channel-model) | 채널 정보 |
-| code | [Error Code](models.md#error-code) |  |
-| message | string | 오류 메시지 |
+| channel | JsonObject | 채널 정보 ([Channel Model](models.md#channel-model)) |
+| code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
+| message | String | 오류 메시지 |
 
 <br>
 
@@ -227,7 +227,7 @@ POST /v2/va/update-channel
 ### Response
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| code | int | 오류 코드 ([Error Code](models.md#error-code)) |
+| code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 
 <br>
@@ -281,7 +281,7 @@ POST /v2/va/remove-channel
 ### Response
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| code | int | 오류 코드 ([Error Code](models.md#error-code)) |
+| code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 
 <br>
@@ -334,8 +334,8 @@ POST /v2/va/callibrate
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
-| distortionPoints | [DistortionPoint](models#distortion-point) | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 | O |
-| calibrationPoints | [CalibrationPoint](models#calibration-point) | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 | O |
+| distortionPoints | JsonObject | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 ([DistortionPoint](models#distortion-point))| O |
+| calibrationPoints | JsonObject | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 ([CalibrationPoint](models#calibration-point)) | O |
 
 <br>
 
@@ -344,7 +344,7 @@ POST /v2/va/callibrate
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | channelId | String | 채널 ID |
-| code | int | 오류 코드 ([Error Code](models.md#error-code)) |
+| code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 
 <br>
@@ -410,7 +410,7 @@ POST /v2/va/snapshot
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | imageData | String | 카메라 스틸컷 데이터 (jpeg -> base64인코딩) |
-| code | int | 오류 코드 ([Error Code](models.md#error-code)) |
+| code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 
 #### Sample JSON
