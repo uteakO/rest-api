@@ -61,8 +61,8 @@ POST /v2/va/create-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| channelId | string | 채널 ID | O |
-| description | string | 관심 영역 설명 | X |
+| channelId | String | 채널 ID | O |
+| description | String | 관심 영역 설명 | X |
 | roiDots | [Integer] | 관심 영역 좌표 | O |
 | analysisConfigs | object ([AnalysisConfig](#analysisconfigs)) | 분석 알고리즘 설정 | X |
 
@@ -102,16 +102,12 @@ ROI 영역을 정의합니다. 선 또는 폴리곤으로 구성될 수 있으�
 ```
 {
     "channelId": "X1ashF0t",
-    "description": "Loitering and intrusion detection for CCTV #3",
+    "description": "Loitering detection for CCTV #3",
     "roiDots": [0.2, 0.2, 0, 0.5, 0.7, 0.1],
     "analysisConfigs": {
         "loiteringConfig": {
-            abnormalStayTime: 1.0,
-            abnormalCi: 1.0
-        },
-        "intrusionConfig": {
-            abnormalStayTime: 1.0,
-            abnormalCi: 1.0
+                alarmTime: 3.0,
+                objectTypes: [PERSON, CAR]
         }
     }
 }
@@ -152,7 +148,7 @@ POST /v2/va/get-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| roiId | string | 관심 영역 ID | O |
+| roiId | String | 관심 영역 ID | O |
 
 <br>
 
@@ -161,8 +157,8 @@ POST /v2/va/get-roi
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | roiId | String | 관심 영역 ID |
-| channelId | string | 채널 ID |
-| description | string | 관심 영역 설명 |
+| channelId | String | 채널 ID |
+| description | String | 관심 영역 설명 |
 | roiDots | [Integer] | 관심 영역 좌표 |
 | analysisConfigs | object ([AnalysisConfig](#analysisconfigs)) | 분석 알고리즘 설정 |
 
@@ -173,16 +169,12 @@ POST /v2/va/get-roi
 {
     "roiId": "Vif7f02j",
     "channelId": "X1ashF0t",
-    "description": "Loitering and intrusion detection for CCTV #3",
+    "description": "Loitering detection for CCTV #3",
     "roiDots" : [0.2, 0.2, 0, 0.5, 0.7, 0.1],
     "analysisConfigs": {
         "loiteringConfig": {
-            abnormalStayTime: 1.0,
-            abnormalCi: 1.0
-        },
-        "intrusionConfig": {
-            abnormalStayTime: 1.0,
-            abnormalCi: 1.0
+                alarmTime: 3.0,
+                objectTypes: [PERSON, CAR]
         }
     }
 }
@@ -201,7 +193,7 @@ POST /v2/va/list-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| channelId | string | 채널 ID | O |
+| channelId | String | 채널 ID | O |
 
 <br>
 
@@ -222,9 +214,9 @@ POST /v2/va/update-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| roiId | string | 관심 영역 ID | O |
-| channelId | string | 채널 ID | X |
-| description | string | 관심 영역 설명 | X |
+| roiId | String | 관심 영역 ID | O |
+| channelId | String | 채널 ID | X |
+| description | String | 관심 영역 설명 | X |
 | roiDots | [Integer] | 관심 영역 좌표 | X |
 | analysisConfigs | object ([AnalysisConfig](#analysisconfigs)) | 분석 알고리즘 설정 | X |
 
@@ -251,7 +243,7 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| roiId | string | 채널 ID | O |
+| roiId | String | 채널 ID | O |
 
 
 <br>
@@ -280,15 +272,23 @@ POST /v2/va/remove-roi
 ```
 {
     "loiteringConfig": {
-            abnormalStayTime: 1.0,
-            abnormalCi: 1.0
+            alarmTime: 3.0,
+            objectTypes: [PERSON, CAR]
     }
 }
 ```
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| loiteringConfig | object (LoiteringConfig) | 배회 감지 설정 | X |
+| loiteringConfig | object (LoiteringConfig) | 영역 내 객체 감지 | X |
+| intrusionConfig | object (IntrusionConfig) | 영역 외부에서 내부로 들어오는 객체를 감지 | X |
+| falldownConfig | object (FalldownConfig) | 쓰러진 사람을 감지 | X |
+| abandonedConfig | object (AbandonedConfig) | 버려진 유기물을 감지 | X |
+| congestionConfig | object (CongestionConfig) | 혼잡도 감지 | X |
+| lineCrossingConfig | object (LineCrossingConfig) | 라인을 통과하는 객체들을 카운팅 | X |
+| doubleLineCrossingConfig | object (DoubleLineCrossingConfig) | 두 라인을 통과하는 객체들을 카운팅 | X |
+| speedConfig | object (SpeedConfig) | 두 라인을 통과하는 객체들을 카운팅 | X |
+| stopConfig | object (StopConfig) | 정지된 객체를 감지 | X |
 
 
 <br><br>
@@ -299,8 +299,8 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| AlarmTime | Double | 발생 대기 시간 | O |
-| ObjectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | X |
+| alarmTime | Double | 발생 대기 시간 | O |
+| objectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | X |
 
 
 ### IntrusionConfig
@@ -308,15 +308,15 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| AlarmTime | Double | 발생 대기 시간 | O |
-| ObjectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
+| alarmTime | Double | 발생 대기 시간 | O |
+| objectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
 
 ### FalldownConfig
 영역 내 쓰러진 사람을 감지합니다.
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| AlarmTime | Double | 발생 대기 시간 | O |
+| alarmTime | Double | 발생 대기 시간 | O |
 
 ### AbandonedConfig
 영역 내 버려진 유기물을 감지합니다.
@@ -325,15 +325,15 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| AlarmTime | Double | 발생 대기 시간 | O |
+| alarmTime | Double | 발생 대기 시간 | O |
 
 ### CongestionConfig
 영역 내 혼잡도를 감지합니다.
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| ObjectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
-| MaxNumberOf | Integer | 객체 개수 제한 | X |
+| objectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
+| maxNumberOf | Integer | 객체 개수 제한 | X |
 
 <!-- 혼잡도는 인원수에 따른 이벤트 & 영역 내 평균 값을 측정한 이벤트 두개 있음
      인원수 설정이 없을 경우 평균을 통한 레벨로 측정?-->
@@ -343,31 +343,31 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| ObjectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
-| Direction | [Direction](#direction) | 방향 선택 | O |
+| objectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
+| direction | [Direction](#direction) | 방향 선택 | O |
 
 ### DoubleLineCrossingConfig
 두 라인을 통과하는 객체들을 카운팅합니다.
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| ObjectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
+| objectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
 
 ### SpeedConfig
 두 라인을 통과하는 객체들을 카운팅합니다.
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| Distance | Integer | 두 라인 간 실제 거리 | O |
-| ObjectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
+| distance | Integer | 두 라인 간 실제 거리 | O |
+| objectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
 
 ### StopConfig
 영역 내 정지된 객체를 감지합니다.
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| AlarmTime | Double | 발생 대기 시간 | O |
-| ObjectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
+| alarmTime | Double | 발생 대기 시간 | O |
+| objectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
 
 <!-- 아래 이벤트는 일단 보류-->
 <!--
