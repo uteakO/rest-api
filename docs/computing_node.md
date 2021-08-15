@@ -1,3 +1,5 @@
+# 컴퓨팅 노드
+
 비디오 분석을 수행할 컴퓨팅 노드를 관리하는 API입니다. 컴퓨팅 노드는 실행 중인 NK-AI 서버(프로세스)입니다.
 
 ## 컴퓨팅 노드 등록하기
@@ -7,6 +9,7 @@ POST /v2/va/create-computing-node
 ```
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | host | String | 호스트 | O |
@@ -18,6 +21,7 @@ POST /v2/va/create-computing-node
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | nodeId | String |노드 ID |
@@ -31,6 +35,7 @@ POST /v2/va/create-computing-node
 POST /v2/va/get-computing-node
 ```
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String |노드 ID | O |
@@ -39,6 +44,7 @@ POST /v2/va/get-computing-node
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | nodeId | String | 노드 ID |
@@ -51,7 +57,7 @@ POST /v2/va/get-computing-node
 | description | String | 제품 설명 |
 | licenseValidity | Bool | 라이센스 유효 여부 |
 | licenseExpired | String | 라이센스 만료일(YYYY-MM-DD) |
-| features | [EventType] | 현재 라이센스에서 사용 가능한 이벤트타입 목록 |
+| features | [EventType](models.md#eventtype) | 현재 라이센스에서 사용 가능한 이벤트타입 목록 |
 
 
 <br><br>
@@ -78,6 +84,7 @@ POST /v2/va/update-computing-node
 ```
 
 ### Request
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | nodeId | String | 노드 ID |
@@ -89,6 +96,7 @@ POST /v2/va/update-computing-node
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | nodeId | String |노드 ID |
@@ -105,6 +113,7 @@ POST /v2/va/remove-computing-node
 ```
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String |노드 ID | O |
@@ -112,6 +121,7 @@ POST /v2/va/remove-computing-node
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | nodeId | String |노드 ID |

@@ -1,12 +1,15 @@
+# 모델
+
 REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 ------------------------
 
 ### Channel Model
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | channelId | String | 채널 ID |
-| nodeId | String | 컴퓨팅 노드 ID | X |
+| nodeId | String | 컴퓨팅 노드 ID |
 | inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
 | channelName | String | 채널 별칭 |
 | inputDeviceType | enum([InputType](models.md#inputtype)) | 입력장치 타입|
@@ -25,6 +28,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 <br><br>
 
 ### Distortion Point
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | startPoint | [Double] |  첫 번째 점의 X, Y 좌표 비율 (0 ~ 1)| O |
@@ -35,6 +39,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 <br><br>
 
 ### Calibration Point
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | verticalPoint1 | [Double] |  세로로 된 직선 1의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
@@ -89,6 +94,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 <br><br>
 
 ### error code
+
 | Value | Description |
 | :---- | :---- |
 | 0 | 성공 |

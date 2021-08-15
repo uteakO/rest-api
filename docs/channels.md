@@ -1,3 +1,5 @@
+# 채널
+
 채널에 대한 API입니다. 채널은 1개의 비디오에 대한 정보이며, 영상분석을 수행하는 단위입니다.
 
 __목차__
@@ -22,6 +24,7 @@ POST /v2/va/register-channel
 <br>
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID | O |
@@ -35,6 +38,7 @@ POST /v2/va/register-channel
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | channelId | String | 채널 ID |
@@ -98,6 +102,7 @@ POST /v2/va/get-channel
 <br>
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
@@ -105,6 +110,7 @@ POST /v2/va/get-channel
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | channel | JsonObject | 채널 정보 ([Channel Model](models.md#channel-model)) |
@@ -215,6 +221,7 @@ POST /v2/va/update-channel
 <br>
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
@@ -225,6 +232,7 @@ POST /v2/va/update-channel
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
@@ -271,6 +279,7 @@ POST /v2/va/remove-channel
 <br>
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
@@ -279,6 +288,7 @@ POST /v2/va/remove-channel
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
@@ -287,6 +297,7 @@ POST /v2/va/remove-channel
 <br>
 
 ### Remarks
+
 비디오 분석이 실행 중인 채널은 삭제할 수 없으며, 삭제하려면 먼저 분석 실행을 중단해야 합니다.
 
 <br>
@@ -389,6 +400,7 @@ POST /v2/va/callibrate
 <br><br>
 
 ## 스냅샷
+
 채널의 영상 스냅샷을 반환합니다.
 ```
 POST /v2/va/snapshot

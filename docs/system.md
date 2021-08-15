@@ -1,12 +1,16 @@
+# 시스템
+
 시스템 상태를 조회하는 API입니다.
 
 ## 시스템 상태 조회
+
 시스템에 이상이 없는지 조회합니다. 이 API를 주기적으로 호출하여 서버의 상태를 체크하십시오.
 ```
 POST /v2/va/get-system-status
 ```
 
 ### Response
+
 아래 표시 된 노드 상태정보를 배열로 응답합니다.
 
 | Name | Type | Description |
