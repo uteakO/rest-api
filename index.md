@@ -2,8 +2,9 @@
 layout: default
 title: Home
 nav_order: 1
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+description: ""
 permalink: /
 ---
 
-# Hello
+# Introduction
+NK-AI 서버연동에 필요한 API 문서입니다.

@@ -165,6 +165,7 @@ POST /v2/va/get-roi
 | description | string | 관심 영역 설명 |
 | roiDots | [Integer] | 관심 영역 좌표 |
 | analysisConfigs | object ([AnalysisConfig](#analysisconfigs)) | 분석 알고리즘 설정 |
+
 <!--| shape | [RoiShape](#roishape) | ROI 형태 |-->
 
 #### JSON sample
@@ -298,7 +299,7 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| AlramTime | Double | 발생 대기 시간 | O |
+| AlarmTime | Double | 발생 대기 시간 | O |
 | ObjectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | X |
 
 
@@ -307,7 +308,7 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| AlramTime | Double | 발생 대기 시간 | O |
+| AlarmTime | Double | 발생 대기 시간 | O |
 | ObjectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
 
 ### FalldownConfig
@@ -315,7 +316,7 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| AlramTime | Double | 발생 대기 시간 | O |
+| AlarmTime | Double | 발생 대기 시간 | O |
 
 ### AbandonedConfig
 영역 내 버려진 유기물을 감지합니다.
@@ -324,7 +325,7 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| AlramTime | Double | 발생 대기 시간 | O |
+| AlarmTime | Double | 발생 대기 시간 | O |
 
 ### CongestionConfig
 영역 내 혼잡도를 감지합니다.
@@ -365,7 +366,7 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| AlramTime | Double | 발생 대기 시간 | O |
+| AlarmTime | Double | 발생 대기 시간 | O |
 | ObjectTypes | [[ObjectType](#objecttype)] | 검출 객체 종류 | O |
 
 <!-- 아래 이벤트는 일단 보류-->
