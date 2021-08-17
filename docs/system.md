@@ -1,4 +1,4 @@
-# 시스템
+# 2) 시스템
 
 시스템 상태를 조회하는 API입니다.
 
@@ -23,7 +23,7 @@ POST /v2/va/get-system-status
 | performance | [Performance](#performance) | 시스템 사용률 |
 | code | int | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
-| recentCrashLogs | [RecentCrashLogs](models.md#recentcrashlogs) | 최근 24시간 내 비정상 종료 된 컴퓨팅 노드 기록정보 |
+| recentCrashLogs | [RecentCrashLogs](models.md#recentcrashlogs) | 최근 (24시간) 내 비정상 종료 된 컴퓨팅 노드 기록정보 |
 
 <br>
 

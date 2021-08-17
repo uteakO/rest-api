@@ -1,4 +1,4 @@
-# 모델
+# 6) 모델
 
 REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
@@ -12,7 +12,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 | nodeId | String | 컴퓨팅 노드 ID |
 | inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
 | channelName | String | 채널 별칭 |
-| inputDeviceType | enum([InputType](models.md#inputtype)) | 입력장치 타입|
+| inputType | enum([InputType](models.md#inputtype)) | 입력 비디오 타입 |
 | siblings | [String] | 연결된 채널 id 목록 |
 | status | enum([ChannelStatus](#channelstatus)) | 채널 상태 |
 
@@ -74,6 +74,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 <br><br>
 
 ### InputType
+입력 비디오 타입
 
 | Enum | Description |
 | :---- | :---- |
@@ -85,6 +86,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 <br><br>
 
 ### RecentCrashLogs
+최근 비정상 종료 된 컴퓨팅 노드 기록정보
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -99,7 +101,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 | :---- | :---- |
 | 0 | 성공 |
 | 1 | 등록되지 않은 채널 |
-| 2 | RTSP 포멧이 정확하지 않음 |
+| 2 | RTSP 포맷이 정확하지 않음 |
 | 3 | 카메라 접근 계정 인증 오류 |
 | 4 | 카메라에 연결 할 수 없음 |
 | 5 | 분석 실행 중 |
