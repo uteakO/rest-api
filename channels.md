@@ -38,8 +38,8 @@ POST /v2/va/register-channel
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | channelId | String | 채널 ID |
-| code | int | 오류 코드 ([Error Code](models.md#error-code)) |
-| message | string | 오류 메시지 |
+| code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
+| message | String | 오류 메시지 |
 
 <br>
 
@@ -349,7 +349,7 @@ POST /v2/va/callibrate
 
 <br>
 
-#### Sample JSON
+### Sample
 
 #### Requset
 ```
@@ -413,7 +413,7 @@ POST /v2/va/snapshot
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 
-#### Sample JSON
+### Sample
 
 #### Requset
 ```
