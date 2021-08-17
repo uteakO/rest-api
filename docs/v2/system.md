@@ -1,12 +1,24 @@
+---
+layout: default
+title: 시스템
+nav_order: 3
+parent: v2
+has_children: false
+# permalink: /docs/v2
+---
+
+
 시스템 상태를 조회하는 API입니다.
 
 ## 시스템 상태 조회
+
 시스템에 이상이 없는지 조회합니다. 이 API를 주기적으로 호출하여 서버의 상태를 체크하십시오.
 ```
 POST /v2/va/get-system-status
 ```
 
 ### Response
+
 아래 표시 된 노드 상태정보를 배열로 응답합니다.
 
 | Name | Type | Description |
@@ -19,7 +31,7 @@ POST /v2/va/get-system-status
 | performance | [Performance](#performance) | 시스템 사용률 |
 | code | int | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
-| recentCrashLogs | [RecentCrashLogs](models.md#recentcrashlogs) | 최근 24시간 내 비정상 종료 된 컴퓨팅 노드 기록정보 |
+| recentCrashLogs | [RecentCrashLogs](models.md#recentcrashlogs) | 최근 (24시간) 내 비정상 종료 된 컴퓨팅 노드 기록정보 |
 
 <br>
 

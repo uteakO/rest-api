@@ -1,15 +1,26 @@
+---
+layout: default
+title: 모델
+nav_order: 6
+parent: v2
+has_children: false
+# permalink: /docs/v2
+---
+
+
 REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 ------------------------
 
 ### Channel Model
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | channelId | String | 채널 ID |
-| nodeId | String | 컴퓨팅 노드 ID | X |
+| nodeId | String | 컴퓨팅 노드 ID |
 | inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
 | channelName | String | 채널 별칭 |
-| inputDeviceType | enum([InputType](models.md#inputtype)) | 입력장치 타입|
+| inputType | enum([InputType](models.md#inputtype)) | 입력 비디오 타입 |
 | siblings | [String] | 연결된 채널 id 목록 |
 | status | enum([ChannelStatus](#channelstatus)) | 채널 상태 |
 
@@ -25,6 +36,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 <br><br>
 
 ### Distortion Point
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | startPoint | [Double] |  첫 번째 점의 X, Y 좌표 비율 (0 ~ 1)| O |
@@ -35,6 +47,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 <br><br>
 
 ### Calibration Point
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | verticalPoint1 | [Double] |  세로로 된 직선 1의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
@@ -69,6 +82,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 <br><br>
 
 ### InputType
+입력 비디오 타입
 
 | Enum | Description |
 | :---- | :---- |
@@ -80,6 +94,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 <br><br>
 
 ### RecentCrashLogs
+최근 비정상 종료 된 컴퓨팅 노드 기록정보
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -89,6 +104,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 <br><br>
 
 ### error code
+
 | Value | Description |
 | :---- | :---- |
 | 0 | 성공 |
@@ -105,12 +121,3 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 | 302 | 분석을 시작 할 수 없는 상태 (카메라 등록 안됨) |
 | 303 | 분석을 시작 할 수 없는 상태 (등록은 되어있으나 카메라에 연결 할 수 없는 상태) |
 | 310 | ROI 설정이 알 맞지 않음 (point가 3개 일 순 없음) |
-
-<br><br>
-
-### Enum Operations
-| Enum | Description |
-| :---- | :---- |
-| VA_START | 분석 시작 |
-| VA_STOP | 분석 중지 |
-| VA_RST | 분석 초기화 |
