@@ -1,4 +1,12 @@
-# 6) 모델
+---
+layout: default
+title: 모델
+nav_order: 6
+parent: v2
+has_children: false
+# permalink: /docs/v2
+---
+
 
 REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 

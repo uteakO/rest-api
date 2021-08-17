@@ -1,4 +1,12 @@
-# 2) 시스템
+---
+layout: default
+title: 시스템
+nav_order: 3
+parent: v2
+has_children: false
+# permalink: /docs/v2
+---
+
 
 시스템 상태를 조회하는 API입니다.
 

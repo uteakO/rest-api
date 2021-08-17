@@ -1,6 +1,30 @@
-# 1) 컴퓨팅 노드
+---
+layout: default
+title: 컴퓨팅 노드
+nav_order: 2
+parent: v2
+has_children: false
+# permalink: /docs/v2
+---
+
 
 비디오 분석을 수행할 컴퓨팅 노드를 관리하는 API입니다. 컴퓨팅 노드는 NK-AI 프로세스를 논리적으로 지칭합니다. 즉, <u>실행 중인 NK-AI 프로그램</u>입니다.
+
+<br>
+
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+
+----
 
 
 ## 컴퓨팅 노드 등록하기
@@ -9,7 +33,7 @@
 POST /v2/va/create-computing-node
 ```
 
-### Request
+**Request**
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -21,7 +45,7 @@ POST /v2/va/create-computing-node
 
 <br>
 
-### Response
+**Response**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -35,7 +59,7 @@ POST /v2/va/create-computing-node
 ```
 POST /v2/va/get-computing-node
 ```
-### Request
+**Request**
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -44,7 +68,7 @@ POST /v2/va/get-computing-node
 
 <br>
 
-### Response
+**Response**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -71,7 +95,8 @@ POST /v2/va/get-computing-node
 POST /v2/va/list-computing-node
 ```
 
-### Response
+**Response**
+
 [컴퓨팅 노드 조회하기](#컴퓨팅-노드-조회하기)와 동일한 응답이 배열로 반환 됩니다.
 
 
@@ -84,7 +109,7 @@ POST /v2/va/list-computing-node
 POST /v2/va/update-computing-node
 ```
 
-### Request
+**Request**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -96,7 +121,7 @@ POST /v2/va/update-computing-node
 
 <br>
 
-### Response
+**Response**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -113,7 +138,7 @@ POST /v2/va/update-computing-node
 POST /v2/va/remove-computing-node
 ```
 
-### Request
+**Request**
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -121,7 +146,7 @@ POST /v2/va/remove-computing-node
 
 <br>
 
-### Response
+**Response**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |

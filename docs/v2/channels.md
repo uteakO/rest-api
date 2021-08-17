@@ -1,18 +1,30 @@
-# 3) 채널
+---
+layout: default
+title: 채널
+nav_order: 4
+parent: v2
+has_children: false
+# permalink: /docs/v2
+---
+
 
 채널에 대한 API입니다. 채널은 1개의 비디오에 대한 정보이며, 영상분석을 수행하는 단위입니다.
 
-__목차__
+<br>
 
-- [채널 등록하기](#채널-등록하기)
-- [채널 보기](#채널-보기)
-- [채널 목록보기](#채널-목록보기)
-- [채널 수정하기](#채널-수정하기)
-- [채널 삭제하기](#채널-삭제하기)
-- [카메라 캘리브레이션](#카메라-캘리브레이션)
-- [스냅샷](#스냅샷)
+{: .no_toc }
 
-------------------------
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+
+----
 
 ## 채널 등록하기
 
@@ -23,7 +35,7 @@ POST /v2/va/register-channel
 ```
 <br>
 
-### Request
+**Request**
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -37,7 +49,7 @@ POST /v2/va/register-channel
 
 <br>
 
-### Response
+**Response**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -47,17 +59,22 @@ POST /v2/va/register-channel
 
 <br>
 
-### Remarks
-#### nodeId
+**Remarks**
+
+**nodeId**
+
 채널의 입력 영상에 대해 비디오 분석을 수행 할 컴퓨팅 노드의 ID 입니다. 비디오 분석을 수행하기 위해서는 최소 1개의 컴퓨팅 노드가 필요합니다.
 
-#### siblings
+**siblings**
+
 동일한 목표지점을 촬영하는 채널인 경우, sibling 관계가 될 수 있습니다. 예를 들어, 같은 위치에서 같은 목표지점을 촬영하도록 일반카메라와 열화상카메라 CCTV가 각각 설치 된 경우입니다. 이 때, 두 CCTV 영상들의 분석결과는 서로 상관관계가 있으므로, 이것을 응용 앱에서 활용하기 위해 본 파라메터를 이용하여 sibling 관계를 관리할 수 있습니다.
 
 <br>
 
-### Sample
-#### Request
+**Sample**
+
+**Request**
+
 ```
 POST /v2/va/register-channel
 
@@ -70,7 +87,8 @@ POST /v2/va/register-channel
 }
 ```
 
-#### Response
+**Response**
+
 ```
 # 성공
 {
@@ -101,7 +119,7 @@ POST /v2/va/get-channel
 
 <br>
 
-### Request
+**Request**
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -109,7 +127,7 @@ POST /v2/va/get-channel
 
 <br>
 
-### Response
+**Response**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -119,9 +137,9 @@ POST /v2/va/get-channel
 
 <br>
 
-### Sample
+**Sample**
 
-#### Requset
+**Request**
 ```
 POST /v2/va/get-channel
 
@@ -130,7 +148,8 @@ POST /v2/va/get-channel
 }
 ```
 
-### Response
+**Response**
+
 ```
 # 성공
 {
@@ -168,22 +187,23 @@ POST /v2/va/list-channels
 <br>
 
 
-### Response
+**Response**
 
 [Channel Model](models.md#channel-model)의 배열을 반환합니다.
 
 <br>
 
-### Sample
+**Sample**
 
-#### Requset
+**Request**
 ```
 POST /v2/va/list-channels
 
 {}
 ```
 
-### Response
+**Response**
+
 ```
 {
    "channels": [{ 
@@ -220,7 +240,7 @@ POST /v2/va/update-channel
 
 <br>
 
-### Request
+**Request**
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -231,7 +251,7 @@ POST /v2/va/update-channel
 
 <br>
 
-### Response
+**Response**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -240,9 +260,9 @@ POST /v2/va/update-channel
 
 <br>
 
-### Sample
+**Sample**
 
-#### Requset
+**Request**
 ```
 POST /v2/va/update-channel
 
@@ -252,7 +272,8 @@ POST /v2/va/update-channel
 }
 ```
 
-#### Response
+**Response**
+
 ```
 # 성공
 {
@@ -278,7 +299,7 @@ POST /v2/va/remove-channel
 ```
 <br>
 
-### Request
+**Request**
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -287,7 +308,7 @@ POST /v2/va/remove-channel
 
 <br>
 
-### Response
+**Response**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -296,14 +317,15 @@ POST /v2/va/remove-channel
 
 <br>
 
-### Remarks
+**Remarks**
 
 비디오 분석이 실행 중인 채널은 삭제할 수 없으며, 삭제하려면 먼저 분석 실행을 중단해야 합니다.
 
 <br>
 
-### Sample
-#### Request
+**Sample**
+
+**Request**
 ```
 POST /v2/va/remove-channel
 
@@ -312,7 +334,8 @@ POST /v2/va/remove-channel
 }
 ```
 
-#### Response
+**Response**
+
 ```
 # 성공
 {
@@ -340,7 +363,7 @@ POST /v2/va/callibrate
 <br>
 
 
-### Request
+**Request**
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -350,7 +373,7 @@ POST /v2/va/callibrate
 
 <br>
 
-### Response
+**Response**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -360,9 +383,10 @@ POST /v2/va/callibrate
 
 <br>
 
-#### Sample JSON
+**Sample JSON** 
 
-#### Requset
+**Request**
+
 ```
 POST /v2/va/callibrate
 
@@ -383,7 +407,8 @@ POST /v2/va/callibrate
 
 ```
 
-#### Response 
+**Response**
+
 ```
 # 성공
 {
@@ -409,7 +434,7 @@ POST /v2/va/snapshot
 <br>
 
 
-### Request
+**Request**
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -417,7 +442,7 @@ POST /v2/va/snapshot
 
 <br>
 
-### Response
+**Response**
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -425,9 +450,10 @@ POST /v2/va/snapshot
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 
-#### Sample JSON
+**Sample JSON** 
 
-#### Requset
+**Request**
+
 ```
 POST /v2/va/snapshot
 
@@ -437,7 +463,8 @@ POST /v2/va/snapshot
 
 ```
 
-#### Response 
+**Response**
+
 ```
 # 성공
 {
