@@ -10,24 +10,10 @@ has_children: false
 
 비디오 분석을 수행할 컴퓨팅 노드를 관리하는 API입니다. 컴퓨팅 노드는 NK-AI 프로세스를 논리적으로 지칭합니다. 즉, <u>실행 중인 NK-AI 프로그램</u>입니다.
 
-<br>
-
-{: .no_toc }
-
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
-
-
 ----
 
 
-## 컴퓨팅 노드 등록하기
+# 컴퓨팅 노드 등록하기
 
 ```
 POST /v2/va/create-computing-node
@@ -54,7 +40,7 @@ POST /v2/va/create-computing-node
 
 <br><br>
 
-## 컴퓨팅 노드 조회하기
+# 컴퓨팅 노드 조회하기
 
 ```
 POST /v2/va/get-computing-node
@@ -88,7 +74,7 @@ POST /v2/va/get-computing-node
 <br><br>
 
 
-## 컴퓨팅 노드 목록 조회하기
+# 컴퓨팅 노드 목록 조회하기
 모든 컴퓨팅 노드를 조회합니다.
 
 ```
@@ -103,7 +89,7 @@ POST /v2/va/list-computing-node
 <br><br>
 
 
-## 컴퓨팅 노드 수정하기
+# 컴퓨팅 노드 수정하기
 
 ```
 POST /v2/va/update-computing-node
@@ -132,7 +118,7 @@ POST /v2/va/update-computing-node
 
 <br><br>
 
-## 컴퓨팅 노드 삭제하기
+# 컴퓨팅 노드 삭제하기
 
 ```
 POST /v2/va/remove-computing-node

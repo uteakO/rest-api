@@ -130,9 +130,20 @@ layout: table_wrappers
           </nav>
         {% endif %}
       {% endunless %}
+
       <div id="main-content" class="main-content" role="main">
         {% if site.heading_anchors != false %}
-          {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#svg-link\"></use></svg>" anchorClass="anchor-heading" anchorAttrs="aria-labelledby=\"%html_id%\"" %}
+            
+        <div class="col-md-12 mx-auto">
+          <aside class="sidebar__right sticky" style="height: auto !important;">
+          <div class="toc">
+          {% include toc.html html=content sanitize=true h_min=1 h_max=1 %}
+          </div>
+          </aside>        
+          
+          {% include vendor/anchor_headings.html html=content sanitize=true h_min=1 h_max=2 beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#svg-link\"></use></svg>" anchorClass="anchor-heading" anchorAttrs="aria-labelledby=\"%html_id%\"" %}
+        </div>
+  
         {% else %}
           {{ content }}
         {% endif %}
