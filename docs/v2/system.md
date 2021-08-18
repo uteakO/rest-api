@@ -35,16 +35,16 @@ POST /v2/va/get-system-status
 
 <br>
 
-#### JSON sample
+### JSON sample
 
-### Request
+#### Request
 ```
 POST /v2/va/get-system-status
 
 {}
 ```
 
-### Response
+#### Response
 ```
 # 성공
 {

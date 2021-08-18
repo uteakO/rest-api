@@ -57,6 +57,18 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
+# Object Type
+
+| Enum | Description |
+| :---- | :---- |
+| PERSON | 사람 |
+| CAR | 일반 차량 |
+| MOTOCYCLE | 오토바이 |
+| BUS | 대형 버스 |
+| TRUCK | 트럭 |
+| FLAME | 불꽃 |
+| SMOKE | 연기 |
+
 # EventType
 
 | Enum | Description |

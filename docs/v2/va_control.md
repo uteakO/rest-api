@@ -14,7 +14,7 @@ has_children: false
 
 ------------------------
 
-## ROI 생성
+# ROI 생성
 지정한 채널에 대해 관심 영역을 정의하고, 관심 영역 내 분석 알고리즘을 설정합니다.
 
 ROI(Region of interest; 관심영역)은 비디오 분석을 실행할 화면 내 영역이며, 분석 종류에 따라 선 또는 폴리곤 형태가 필요합니다. ( 이벤트별 ROI 설정 방법 참조 )
@@ -29,6 +29,7 @@ POST /v2/va/create-roi
 <br>
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
@@ -39,6 +40,7 @@ POST /v2/va/create-roi
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | roiId | String | 관심 영역 ID |
@@ -48,6 +50,7 @@ POST /v2/va/create-roi
 <br>
 
 ### Detecter Info
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | model | String | 검출 모델 버전 (default: lastest) | X |
@@ -57,11 +60,14 @@ POST /v2/va/create-roi
 <br>
 
 ### Remarks
+
 검출하고자 하는 객체의 ROI를 설정합니다. 그외 자세한 설명...필요..
 
 <br>
 
-#### Sample
+### JSON Sample
+
+#### Request
 ```
 POST /v2/va/create-roi
 
@@ -84,7 +90,7 @@ POST /v2/va/create-roi
 <br>
 
 
-#### Sample
+#### Response
 ```
 # 성공
 {
@@ -101,7 +107,7 @@ POST /v2/va/create-roi
 
 <br><br>
 
-## ROI 조회
+# ROI 조회
 ROI를 조회합니다.
 ```
 POST /v2/va/get-roi
@@ -109,6 +115,7 @@ POST /v2/va/get-roi
 <br>
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
@@ -117,6 +124,7 @@ POST /v2/va/get-roi
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | description | String | 관심 영역 설명 |
@@ -126,7 +134,7 @@ POST /v2/va/get-roi
 <br>
 
 <!--| shape | [RoiShape](#roishape) | ROI 형태 |-->
-### Sample
+### JSON Sample
 
 #### Requset
 ```
@@ -166,7 +174,7 @@ POST /v2/va/get-roi
 
 <br><br>
 
-## 채널 내 ROI 목록 조회
+# 채널 내 ROI 목록 조회
 지정한 채널에 추가 된 모든 ROI들을 조회합니다.
 ```
 POST /v2/va/list-roi
@@ -175,6 +183,7 @@ POST /v2/va/list-roi
 <br>
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
@@ -187,7 +196,7 @@ POST /v2/va/list-roi
 
 <br>
 
-### Sample
+### JSON Sample
 #### Requset
 ```
 POST /v2/va/get-roi
@@ -243,7 +252,7 @@ POST /v2/va/get-roi
 
 <br><br>
 
-## ROI 수정
+# ROI 수정
 ROI 설정을 수정합니다.
 ```
 POST /v2/va/update-roi
@@ -252,6 +261,7 @@ POST /v2/va/update-roi
 <br>
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
@@ -265,6 +275,7 @@ POST /v2/va/update-roi
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
@@ -272,7 +283,7 @@ POST /v2/va/update-roi
 
 <br>
 
-### Sample
+### JSON Sample
 #### Requset
 ```
 POST /v2/va/update-roi
@@ -311,7 +322,7 @@ POST /v2/va/update-roi
 
 <br><br>
 
-## ROI 삭제
+# ROI 삭제
 ROI 설정을 삭제합니다.
 ```
 POST /v2/va/remove-roi
@@ -320,6 +331,7 @@ POST /v2/va/remove-roi
 <br>
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
@@ -329,6 +341,7 @@ POST /v2/va/remove-roi
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
@@ -341,7 +354,7 @@ POST /v2/va/remove-roi
 
 <br><br>
 
-### Sample
+### JSON Sample
 #### Requset
 ```
 POST /v2/va/remove-roi
@@ -380,6 +393,7 @@ POST /v2/va/control
 
 <!-- control 네이밍 변경하는게 좋지 않을까요.. 무엇??-->
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
@@ -390,6 +404,7 @@ POST /v2/va/control
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | sourceIp | String | Channel GRPC IP |
@@ -403,7 +418,7 @@ POST /v2/va/control
 parameter는 Reset에서 사용되는 ROI 리스트 등 그외에도 사용될 수 있으며, 추후 확장성을 위함..
 VA_START를 하기 위해서는 ROI가 먼저 생성 되어있어야함.
 
-### Sample
+### JSON Sample
 #### Requset
 ```
 POST /v2/va/control
@@ -477,14 +492,15 @@ POST /v2/va/list-event
 <br>
 
 ### Request
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
-<!-- | analysisConfig |  | 제어에 필요한 파라미터 ([AnalysisConfig](#analysis-config)) | O | -->
 
 <br>
 
 ### Response
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
@@ -495,7 +511,7 @@ POST /v2/va/list-event
 
 ----------------
 
-### Sample
+### JSON Sample
 #### Requset
 ```
 POST /v2/va/list-event 
@@ -555,7 +571,7 @@ POST /v2/va/list-event
 
 <br><br>
 
-## 일반 분석 설정
+# 일반 분석 설정
 
 ### Remarks
 분석 시작할때 넘겨줘야하는 설정 객체
@@ -585,16 +601,7 @@ POST /v2/va/list-event
 <br><br>
 
   
-# Object Type
-| Enum | Description |
-| :---- | :---- |
-| PERSON | 사람 |
-| CAR | 일반 차량 |
-| MOTOCYCLE | 오토바이 |
-| BUS | 대형 버스 |
-| TRUCK | 트럭 |
-| FLAME | 불꽃 |
-| SMOKE | 연기 |
+
 
 
 
