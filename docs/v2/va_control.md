@@ -10,24 +10,7 @@ has_children: false
 
 비디오 분석 설정에 대한 API입니다.
 
-__목차__
-- [ROI 생성](#roi-생성)
-- [ROI 조회](#roi-조회)
-- [채널 내 ROI 목록 조회](#채널-내-roi-목록-조회)
-- [ROI 수정](#roi-수정)
-- [ROI 삭제](#roi-삭제)
-- [ROI LINK 생성](#roi-link-생성)
-- [ROI LINK 조회](#roi-link-조회)
-- [채널 내 ROI LINK 조회](#채널-내-roi-link-조회)
-- [ROI LINK 수정](#roi-link-수정)
-- [ROI LINK 삭제](#roi-link-삭제)
-- [비디오 분석 제어](#비디오-분석-제어)
-
 ------------------------
-
-# Roi
-관심 영역 생성
-<br>
 
 ## ROI 생성
 지정한 채널에 관심 영역을 정의하고, 관심 영역 내 분석 알고리즘을 설정합니다.
@@ -167,7 +150,6 @@ POST /v2/va/get-roi
 ### Request
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| channelId | String | 채널 ID | O |
 | roiId | String | 관심 영역 ID | O |
 
 <br>
@@ -744,6 +726,7 @@ POST /v2/va/list-link
     "message" : "fail"
 }
 ```
+
 
 <br><br>
 

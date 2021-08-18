@@ -23,9 +23,9 @@ POST /v2/va/create-computing-node
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| host | String | 호스트 | O |
-| httpPort | Integer | HTTP 포트번호 | O |
-| rpcPort | Integer | RPC 포트번호 | O |
+| host | String | 호스트주소 | X |
+| httpPort | Integer | HTTP 포트번호 | X |
+| rpcPort | Integer | RPC 포트번호 | X |
 | nodeName | String | 노드 닉네임 | X |
 
 

@@ -8,7 +8,7 @@ has_children: false
 ---
 
 
-REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
+REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
 
 ------------------------
 
@@ -35,7 +35,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
-# Distortion Point
+# DistortionPoint
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -46,7 +46,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
-# Calibration Point
+# CalibrationPoint
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -57,7 +57,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
-# Object Type
+# ObjectType
 
 | Enum | Description |
 | :---- | :---- |
@@ -69,7 +69,9 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 | FLAME | 불꽃 |
 | SMOKE | 연기 |
 
-# EventType
+<br><br>
+
+<!-- # EventType
 
 | Enum | Description |
 | :---- | :---- |
@@ -91,7 +93,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 | EVT_TRAFFIC_ACTUATED_SIGNAL | 교통 감응신호 (rs232 통신으로 옵션보드로 차량 유무 신호 전송) |
 | EVT_CROSSWALK_QUEUEING | 횡단보도 대기열 카운팅 |
 
-<br><br>
+<br><br> -->
 
 # InputType
 입력 비디오 타입

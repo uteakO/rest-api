@@ -28,8 +28,8 @@ POST /v2/va/register-channel
 | :---- | :---- |:---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID | O |
 | channelName | String | 채널 별칭 | X |
-| inputUri | String | 입력 비디오 URI (RTSP 주소 또는 로컬파일 경로) | O |
-| inputType | String | 입력 비디오 타입 ([InputType](models#inputtype)) | X |
+| inputUri | String | 입력 비디오 URI (RTSP 주소 또는 로컬파일 경로) | X |
+| inputType | String | 입력 비디오 타입 ([InputType](models.md#inputtype)) | X |
 | siblings | String[] | 연결된 채널 id 목록 | X |
 
 <br>
@@ -233,6 +233,8 @@ POST /v2/va/update-channel
 | nodeId | String | 컴퓨팅 노드 ID | X |
 | inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) | X |
 | channelName | String | 채널 별칭 | X |
+| inputType | String | 입력 비디오 타입 ([InputType](models.md#inputtype)) | X |
+| siblings | String[] | 연결된 채널 id 목록 | X |
 
 <br>
 
@@ -253,7 +255,7 @@ POST /v2/va/update-channel
 
 {
     "channelId": "X1ashF0t",
-    "channelName": "Home CCTV",
+    "channelName": "Home CCTV"
 }
 ```
 
@@ -353,8 +355,8 @@ POST /v2/va/callibrate
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
-| distortionPoints | JsonObject | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 ([DistortionPoint](models#distortion-point))| O |
-| calibrationPoints | JsonObject | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 ([CalibrationPoint](models#calibration-point)) | O |
+| distortionPoints | JsonObject | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 ([DistortionPoint](models#distortionpoint))| O |
+| calibrationPoints | JsonObject | 왜곡 보정을 위한 동일한 직선 위의 3점의 영상 좌표 ([CalibrationPoint](models#calibrationpoint)) | O |
 
 <br>
 
