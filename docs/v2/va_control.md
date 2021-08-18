@@ -187,7 +187,7 @@ POST /v2/va/get-roi
 <!--| shape | [RoiShape](#roishape) | ROI 형태 |-->
 ### Sample
 
-### Requset
+### Request
 ```
 POST /v2/va/get-roi
 
@@ -283,7 +283,7 @@ POST /v2/va/list-roi
 <br>
 
 ### Sample
-### Requset
+### Request
 ```
 POST /v2/va/get-roi
 
@@ -390,7 +390,7 @@ POST /v2/va/update-roi
 <br>
 
 ### Sample
-#### Requset
+### Request
 ```
 POST /v2/va/update-roi
 
@@ -494,7 +494,7 @@ POST /v2/va/remove-roi
 <br><br>
 
 ### Sample
-#### Requset
+#### Request
 ```
 POST /v2/va/remove-roi
 
@@ -562,7 +562,7 @@ POST /v2/va/create-link
 ----------------
 
 ### Sample
-### Requset
+#### Request
 
 ```
 {
@@ -582,7 +582,7 @@ POST /v2/va/create-link
 }
 ```
 
-### Response
+#### Response
 
 ```
 #성공
@@ -625,7 +625,7 @@ POST /v2/va/get-link
 <!--| shape | [RoiShape](#roishape) | ROI 형태 |-->
 ### Sample
 
-### Requset
+#### Request
 ```
 POST /v2/va/get-roi
 
@@ -635,7 +635,7 @@ POST /v2/va/get-roi
 }
 ```
 
-### Response
+#### Response
 ```
 # 성공
 {
@@ -690,7 +690,7 @@ POST /v2/va/list-link
 <br><br>
 
 ### Sample
-#### Requset
+#### Request
 
 ```
 POST /v2/va/list-link
@@ -775,7 +775,7 @@ POST /v2/va/update-link
 <br>
 
 ### Sample
-### Requset
+#### Request
 ```
 POST /v2/va/remove-roi
 
@@ -797,7 +797,7 @@ POST /v2/va/remove-roi
 }
 ```
 
-### Response
+#### Response
 ```
 # 성공
 {
@@ -841,7 +841,7 @@ POST /v2/va/remove-link
 <br>
 
 ### Sample
-### Requset
+#### Request
 ```
 POST /v2/va/remove-roi
 
@@ -851,7 +851,7 @@ POST /v2/va/remove-roi
 }
 ```
 
-### Response
+#### Response
 ```
 # 성공
 {
@@ -903,7 +903,7 @@ parameter는 Reset에서 사용되는 ROI 리스트 등 그외에도 사용될 �
 VA_START를 하기 위해서는 ROI가 먼저 생성 되어있어야함.
 
 ### Sample
-#### Requset
+#### Request
 
 ```
 POST /v2/va/control
