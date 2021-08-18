@@ -10,7 +10,7 @@ has_children: false
 
 시스템 상태를 조회하는 API입니다.
 
-## 시스템 상태 조회
+# 시스템 상태 조회
 
 시스템에 이상이 없는지 조회합니다. 이 API를 주기적으로 호출하여 서버의 상태를 체크하십시오.
 ```
@@ -24,11 +24,11 @@ POST /v2/va/get-system-status
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID |
-| version | [Version](#version) | 버전 정보 |
+| version | [Version](models.md#version) | 버전 정보 |
 | channelsInVaRunning | Integer | 비디오 분석이 실행 중인 채널 개수 |
-| systemWarnings | [SystemWarnings](#systemwarnings) | 오류 상태 목록 |
+| systemWarnings | [SystemWarnings](models.md#systemwarnings) | 오류 상태 목록 |
 | channelsInWarning | [Channel](models.md#channel-model) | 경고 상태인 채널들의 정보 |
-| performance | [Performance](#performance) | 시스템 사용률 |
+| performance | [Performance](models.md#performance) | 시스템 사용률 |
 | code | int | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 | recentCrashLogs | [RecentCrashLogs](models.md#recentcrashlogs) | 최근 (24시간) 내 비정상 종료 된 컴퓨팅 노드 기록정보 |
@@ -129,39 +129,3 @@ POST /v2/va/get-system-status
 ```
 
 <br>
-
-## SystemWarnings
-
-| Enum | Description |
-| :---- | :---- |
-| SYS_RESOURCE_FULL | 시스템 리소스 한계 사용 중 |
-| SYS_UNSTABLE_NETWORK | 네트워크 불안정 |
-| SYS_NO_LICENSE | 라이센스 없음 |
-| SYS_LICENSE_EXPIRED | 라이센스 만료 |
-
-<br>
-
-## Performance
-
-| Name | Type | Description |
-| :---- | :---- |:---- |
-| cpuUsage | Double | CPU 사용률 |
-| gpuUsage | Double | GPU 사용률 |
-| memoryUsage | Double | Memory 사용률 |
-| diskUsage | Double | Disk 사용률 |
-
-
-<br>
-
-## Version
-
-| Name | Type | Description |
-| :---- | :---- |:---- |
-| software | String | NK 프로그램 버전 |
-| detectorModel | Dynaimc Dictionary | model version |
-| firmware | String | 펌웨어 버전 (OS) |
-| gpuModel | String | GPU 모델 |
-| gpuVersion | String | GPU 버전 |
-
-
-<br><br>

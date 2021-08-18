@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 모델
-nav_order: 6
+nav_order: 7
 parent: v2
 has_children: false
 # permalink: /docs/v2
@@ -12,7 +12,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 ------------------------
 
-### Channel Model
+# Channel Model
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -26,7 +26,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
-### ChannelStatus
+# ChannelStatus
 
 | Enum | Description |
 | :---- | :---- |
@@ -35,7 +35,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
-### Distortion Point
+# Distortion Point
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -46,7 +46,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
-### Calibration Point
+# Calibration Point
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -57,7 +57,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
-### EventType
+# EventType
 
 | Enum | Description |
 | :---- | :---- |
@@ -81,7 +81,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
-### InputType
+# InputType
 입력 비디오 타입
 
 | Enum | Description |
@@ -93,7 +93,46 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
-### RecentCrashLogs
+
+
+# SystemWarnings
+
+| Enum | Description |
+| :---- | :---- |
+| SYS_RESOURCE_FULL | 시스템 리소스 한계 사용 중 |
+| SYS_UNSTABLE_NETWORK | 네트워크 불안정 |
+| SYS_NO_LICENSE | 라이센스 없음 |
+| SYS_LICENSE_EXPIRED | 라이센스 만료 |
+
+<br>
+
+# Performance
+
+| Name | Type | Description |
+| :---- | :---- |:---- |
+| cpuUsage | Double | CPU 사용률 |
+| gpuUsage | Double | GPU 사용률 |
+| memoryUsage | Double | Memory 사용률 |
+| diskUsage | Double | Disk 사용률 |
+
+
+<br>
+
+# Version
+
+| Name | Type | Description |
+| :---- | :---- |:---- |
+| software | String | NK 프로그램 버전 |
+| detectorModel | Dynaimc Dictionary | model version |
+| firmware | String | 펌웨어 버전 (OS) |
+| gpuModel | String | GPU 모델 |
+| gpuVersion | String | GPU 버전 |
+
+
+<br><br>
+
+
+# RecentCrashLogs
 최근 비정상 종료 된 컴퓨팅 노드 기록정보
 
 | Name | Type | Description |
@@ -103,7 +142,7 @@ REST API에서 사용 되는 내부 클래스와 Enum 구조들입니다.
 
 <br><br>
 
-### error code
+# error code
 
 | Value | Description |
 | :---- | :---- |
