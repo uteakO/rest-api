@@ -29,8 +29,8 @@ POST /v2/va/create-roi
 | description | String | 관심 영역 설명 | X |
 | stayTime | Integer | 발생 지연 시간 | X |
 | numberOf | Integer | 최소 발생 객체수 조건 | X |
-| feature | string | 영역 속성([RoiFeature](#roi-feature)) | O |
-| roiDots | JsonObject[] | ROI를 구성하는 점들([RoiDot](#roi-dot)) | O |
+| feature | Enum | 영역 속성(**[RoiFeature](#roi-feature)**) | O |
+| roiDots | JsonObject[] | ROI를 구성하는 점들(**[RoiDot](#roi-dot)**) | O |
 
 <br/>
 
@@ -39,7 +39,7 @@ POST /v2/va/create-roi
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | roiId | String | 관심 영역 ID |
-| code | Integer | 오류 코드 ([Error Code](../models.md#error-code)) |
+| code | Integer | 오류 코드 (**[Error Code](../models.md#error-code)**) |
 | message | String | 오류 메시지 |
 
 <br/>
@@ -50,7 +50,7 @@ POST /v2/va/create-roi
 | :---- | :---- |:---- |:---- |
 | X | Integer | X 좌표 | O |
 | Y | Integer | Y 좌표 | O |
-| lineUntilNextDot | JsonObject[] | 검출 객체([RoiLine](#roi-line)) | O |
+| lineUntilNextDot | JsonObject[] | 검출 객체(**[RoiLine](#roi-line)**) | O |
 
 <br/>
 
@@ -60,12 +60,13 @@ POST /v2/va/create-roi
 | :---- | :---- |:---- |:---- |
 | disable | boolean | 비활성화 | O |
 | direction | String | 방향 설정 | O |
-| target | JsonObject[] | 검출 객체([ObjectType](#object-type)) | O |
+| target | Enum[] | 검출 객체(**[ObjectType](#object-type)**) | O |
 
 <br/>
 
-### Sample
-### Request
+### JSON Sample
+
+#### Request
 <!-- 
     - 무조건 polygon 형태 유지.
     - 영역 이벤트는 어떻게 처리할 것인가... 
@@ -127,7 +128,7 @@ POST /v2/va/create-roi
 <br>
 
 
-### Response
+#### Response
 
 ```
 #성공
@@ -168,15 +169,15 @@ POST /v2/va/get-roi
 | description | String | 관심 영역 설명 | O |
 | stayTime | Integer | 발생 지연 시간 | O |
 | numberOf | Integer | 최소 발생 객체수 조건 | O |
-| feature | string | 영역 속성([RoiFeature](#roi-feature)) | O |
-| roiDots | JsonObject[] | ROI를 구성하는 점들([RoiDot](#roi-dot)) | O |
+| feature | Enum | 영역 속성(**[RoiFeature](#roi-feature)**) | O |
+| roiDots | JsonObject[] | ROI를 구성하는 점들(**[RoiDot](#roi-dot)**) | O |
 
 <br>
 
 <!--| shape | [RoiShape](#roishape) | ROI 형태 |-->
-### Sample
+### JSON Sample
 
-### Request
+#### Request
 ```
 POST /v2/va/get-roi
 
@@ -186,7 +187,7 @@ POST /v2/va/get-roi
 }
 ```
 
-### Response
+#### Response
 ```
 # 성공
 {
@@ -268,12 +269,12 @@ POST /v2/va/list-roi
 
 ### Response
 
-[ROI 조회](#roi-조회) 응답의 배열입니다.
+**[ROI 조회](#roi-조회)** 응답의 배열입니다.
 
 <br>
 
-### Sample
-### Request
+### JSON Sample
+#### Request
 ```
 POST /v2/va/get-roi
 
@@ -282,7 +283,7 @@ POST /v2/va/get-roi
 }
 ```
 
-### Response
+#### Response
 ```
 # 성공
 {
@@ -365,8 +366,8 @@ POST /v2/va/update-roi
 | description | String | 관심 영역 설명 | X |
 | stayTime | Integer | 발생 지연 시간 | X |
 | numberOf | Integer | 최소 발생 객체수 조건 | X |
-| feature | string | 영역 속성([RoiFeature](#roi-feature)) | X |
-| roiDots | JsonObject[] | ROI를 구성하는 점들([RoiDot](#roi-dot)) | X |
+| feature | Enum | 영역 속성(**[RoiFeature](#roi-feature)**) | X |
+| roiDots | JsonObject[] | ROI를 구성하는 점들(**[RoiDot](#roi-dot)**) | X |
 
 
 
@@ -376,13 +377,13 @@ POST /v2/va/update-roi
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| code | Integer | 오류 코드 ([Error Code](../models.md#error-code)) |
+| code | Integer | 오류 코드 (**[Error Code](../models.md#error-code)**) |
 | message | String | 오류 메시지 |
 
 <br>
 
-### Sample
-### Request
+### JSON Sample
+#### Request
 ```
 POST /v2/va/update-roi
 
@@ -481,7 +482,7 @@ POST /v2/va/remove-roi
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| code | Integer | 오류 코드 ([Error Code](../models.md#error-code)) |
+| code | Integer | 오류 코드 (**[Error Code](../models.md#error-code)**) |
 | message | String | 오류 메시지 |
 
 <br>
@@ -491,8 +492,10 @@ POST /v2/va/remove-roi
 
 <br><br>
 
-### Sample
+### JSON Sample
+
 #### Request
+
 ```
 POST /v2/va/remove-roi
 
@@ -503,6 +506,7 @@ POST /v2/va/remove-roi
 ```
 
 #### Response
+
 ```
 # 성공
 {

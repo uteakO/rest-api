@@ -22,32 +22,32 @@ POST /v2/va/control
 ```
 <br>
 
-#### Request
+### Request
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
-| operation | String | 제어 명령 ([Operations](../models.md#operations)) | O |
+| operation | Enum | 제어 명령 (**[Operations](../models.md#operations)**) | O |
 | parameter | String[] | 필요시 파라미터 전달 | X |
 
 <br>
 
-#### Response
+### Response
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | sourceIp | String | Channel GRPC IP |
 | sourcePort | Integer | Channel GRPC Port |
-| code | Integer | 오류 코드 ([Error Code](../models.md#error-code)) |
+| code | Integer | 오류 코드 (**[Error Code](../models.md#error-code)**) |
 | message | String | 오류 메시지 |
 
 <br>
 
-#### Remarks
+### Remarks
 
 VA_START를 하기 위해서는 ROI가 먼저 생성 되어있어야 합니다.
 
-### Sample
+### JSON Sample
 #### Request
 
 ```

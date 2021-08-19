@@ -51,7 +51,7 @@ POST /v2/va/create-link
 
 ----------------
 
-### Sample
+### JSON Sample
 #### Request
 
 ```
@@ -115,7 +115,7 @@ POST /v2/va/get-link
 <br>
 
 <!--| shape | [RoiShape](#roishape) | ROI 형태 |-->
-### Sample
+### JSON Sample
 
 #### Request
 ```
@@ -181,7 +181,7 @@ POST /v2/va/list-link
 
 <br><br>
 
-### Sample
+### JSON Sample
 #### Request
 
 ```
@@ -269,7 +269,7 @@ POST /v2/va/update-link
 
 <br>
 
-### Sample
+### JSON Sample
 #### Request
 ```
 POST /v2/va/remove-roi
@@ -335,7 +335,7 @@ POST /v2/va/remove-link
 
 <br>
 
-### Sample
+### JSON Sample
 #### Request
 ```
 POST /v2/va/remove-roi
@@ -362,88 +362,3 @@ POST /v2/va/remove-roi
 
 <br><br>
 
-
-# 비디오 분석 제어
-이 API를 이용하여 지정 채널에 대해 비디오 분석을 시작하거나 중지할 수 있습니다.
-또한, ROI 영역의 검출객체 카운팅 상태들을 초기화할 수 있습니다.
-```
-POST /v2/va/control 
-```
-<br>
-
-#### Request
-
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| channelId | String | 채널 ID | O |
-| operation | String | 제어 명령 ([Operations](../models#enum-operations)) | O |
-| parameter | String[] | 필요시 파라미터 전달 | X |
-
-<br>
-
-#### Response
-
-| Name | Type | Description |
-| :---- | :---- |:---- |
-| sourceIp | String | Channel GRPC IP |
-| sourcePort | Integer | Channel GRPC Port |
-| code | Integer | 오류 코드 ([Error Code](../models.md#error-code)) |
-| message | String | 오류 메시지 |
-
-<br>
-
-#### Remarks
-
-parameter는 Reset에서 사용되는 ROI 리스트 등 그외에도 사용될 수 있으며, 추후 확장성을 위함..
-VA_START를 하기 위해서는 ROI가 먼저 생성 되어있어야함.
-
-### Sample
-#### Request
-
-```
-POST /v2/va/control
-
-# VA_START
-{
-    "channelId" : "X1ashF0t",
-    "operation" : "VA_START",
-}
-
-# VA_STOP
-{
-    "channelId" : "X1ashF0t",
-    "operation" : "VA_STOP",
-}
-
-# VA_RST
-{
-    "channelId" : "X1ashF0t",
-    "operation" : "VA_RST",
-    "parameter" : ["roiId1", "roiId2", "roiId3"]
-}
-```
-
-#### Response
-
-```
-## 성공
-# VA_START
-{
-    "sourceIp" : "192.168.0.30",
-    "sourcePort" : "40400"
-    "code" : 0
-}
-
-# VA_STOP, VA_RST
-{
-    "code" : 0
-}
-
-## 실패
-{
-    "code" : 300,
-    "message" : "fail"
-}
-```
-
-<br><br>
