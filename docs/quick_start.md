@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Quick start guides
-nav_order: 2
+nav_order: 3
 # parent: 
 has_children: false
 # permalink: /docs/v2
