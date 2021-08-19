@@ -394,10 +394,11 @@ POST /v2/va/update-roi
     "stayTime" : 5,  
     "numberOf" : 1,  
     "feature" : true, 
-    "roiDots" : [
+    "roiLines" : [
         {
-           "X" : 0,
-           "y" : 0,
+           "lineId" : "Vif7f02j_0",
+           "startPoint" : [0,0],
+           "endPoint" : [0,0],
            "lineUntilNextDot" : 
            {
                 "disable" : false,
@@ -406,9 +407,10 @@ POST /v2/va/update-roi
             }
         },
         {
-            "X" : 1,
-            "y" : 0,
-            "lineUntilNextDot" : 
+           "lineId" : "Vif7f02j_1",
+           "startPoint" : [0,0],
+           "endPoint" : [0,0],
+           "lineUntilNextDot" : 
             {
                 "disable" : false,
                 "direction" : "enter",
@@ -416,19 +418,21 @@ POST /v2/va/update-roi
             }
         },
         {
-            "X" : 1,
-            "y" : 1,
-            "lineUntilNextDot" : 
-            {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Vehicle"]
-            }
+           "lineId" : "Vif7f02j_2",
+           "startPoint" : [0,0],
+           "endPoint" : [0,0],
+           "lineUntilNextDot" : 
+           {
+               "disable" : false,
+               "direction" : "enter",
+               "target" : ["Vehicle"]
+           }
         },
         {
-            "X" : 0,
-            "y" : 1,
-            "lineUntilNextDot" : 
+           "lineId" : "Vif7f02j_3",
+           "startPoint" : [0,0],
+           "endPoint" : [0,0],
+           "lineUntilNextDot" : 
             {
                 "disable" : false,
                 "direction" : "enter",
