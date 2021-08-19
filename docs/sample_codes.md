@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Sample codes
-nav_order: 4
+title: Sample guides
+nav_order: 3
 # parent: 
 has_children: false
 # permalink: /docs/v2
