@@ -12,7 +12,7 @@ REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
 
 ------------------------
 
-# Channel Model
+# Channel
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -146,7 +146,7 @@ REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
 <br><br>
 
 
-# RecentCrashLogs
+<!-- # RecentCrashLogs
 최근 비정상 종료 된 컴퓨팅 노드 기록정보
 
 | Name | Type | Description |
@@ -154,9 +154,21 @@ REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
 | nodeId | String | 컴퓨팅 노드 ID |
 | crashTime | String | 비정상 종료 시각 |
 
-<br><br>
+<br><br> -->
 
-# error code
+
+
+# Operations
+
+비디오 분석 제어 명령들
+
+| Name | Type | Description |
+| :---- | :---- |:---- |
+| VA_START | String | 비디오 분석 시작/재개 |
+| VA_STOP | String | 비디오 분석 중지 |
+| VA_RST | String | 비디오 분석 중 누적 집계된 값들을 모두 초기화 (즉, ROI 설정 직후 상태로 초기화) |
+
+# Error code
 
 | Value | Description |
 | :---- | :---- |

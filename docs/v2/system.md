@@ -24,14 +24,16 @@ POST /v2/va/get-system-status
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID |
-| version | [Version](models.md#version) | 버전 정보 |
+| version | JsonObject | 버전 정보([Version](models.md#version)) |
 | channelsInVaRunning | Integer | 비디오 분석이 실행 중인 채널 개수 |
-| systemWarnings | [SystemWarnings](models.md#systemwarnings) | 오류 상태 목록 |
-| channelsInWarning | [Channel](models.md#channel-model) | 경고 상태인 채널들의 정보 |
-| performance | [Performance](models.md#performance) | 시스템 사용률 |
+| systemWarnings | JsonObject[] | 오류 상태 목록([SystemWarnings](models.md#systemwarnings)) |
+| channelsInWarning | JsonObject[] | 경고 상태인 채널들의 정보 ([Channel](models.md#channel)) |
+| performance | JsonObject | 시스템 사용률([Performance](models.md#performance)) |
 | code | int | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
-| recentCrashLogs | [RecentCrashLogs](models.md#recentcrashlogs) | 최근 (24시간) 내 비정상 종료 된 컴퓨팅 노드 기록정보 |
+
+
+<!-- | recentCrashLogs | JsonObject | 최근 (24시간) 내 비정상 종료 된 컴퓨팅 노드 기록정보([RecentCrashLogs](models.md#recentcrashlogs)) | -->
 
 <br>
 

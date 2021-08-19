@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 채널
+title: 채널 관리
 nav_order: 4
 parent: v2
 has_children: false
@@ -116,7 +116,7 @@ POST /v2/va/get-channel
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| channel | JsonObject | 채널 정보 ([Channel Model](models.md#channel-model)) |
+| channel | JsonObject | 채널 정보 ([Channel](models.md#channel)) |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 
@@ -174,7 +174,7 @@ POST /v2/va/list-channels
 
 **Response**
 
-[Channel Model](models.md#channel-model)의 배열을 반환합니다.
+[Channel](models.md#channel)의 배열을 반환합니다.
 
 <br>
 
