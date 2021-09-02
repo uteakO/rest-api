@@ -19,7 +19,7 @@ has_children: false
 POST /v2/va/create-computing-node
 ```
 
-**Request**
+### Request
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -31,7 +31,7 @@ POST /v2/va/create-computing-node
 
 <br>
 
-**Response**
+### Response
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -45,7 +45,7 @@ POST /v2/va/create-computing-node
 ```
 POST /v2/va/get-computing-node
 ```
-**Request**
+### Request
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -54,7 +54,7 @@ POST /v2/va/get-computing-node
 
 <br>
 
-**Response**
+### Response
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -68,7 +68,7 @@ POST /v2/va/get-computing-node
 | description | String | 제품 설명 |
 | licenseValidity | Bool | 라이센스 유효 여부 |
 | licenseExpired | String | 라이센스 만료일(YYYY-MM-DD) |
-| features | [EventType](models.md#eventtype) | 현재 라이센스에서 사용 가능한 이벤트타입 목록 |
+| functions | Enum[] | 현재 라이센스에서 사용 가능한 기능 목록 (**[Functions](models.md#functions)**) |
 
 
 <br><br>
@@ -81,9 +81,9 @@ POST /v2/va/get-computing-node
 POST /v2/va/list-computing-node
 ```
 
-**Response**
+### Response
 
-[컴퓨팅 노드 조회하기](#컴퓨팅-노드-조회하기)와 동일한 응답이 배열로 반환 됩니다.
+**[컴퓨팅 노드 조회하기](#컴퓨팅-노드-조회하기)**와 동일한 응답이 배열로 반환 됩니다.
 
 
 <br><br>
@@ -95,7 +95,7 @@ POST /v2/va/list-computing-node
 POST /v2/va/update-computing-node
 ```
 
-**Request**
+### Request
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -107,7 +107,7 @@ POST /v2/va/update-computing-node
 
 <br>
 
-**Response**
+### Response
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -124,7 +124,7 @@ POST /v2/va/update-computing-node
 POST /v2/va/remove-computing-node
 ```
 
-**Request**
+### Request
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -132,7 +132,7 @@ POST /v2/va/remove-computing-node
 
 <br>
 
-**Response**
+### Response
 
 | Name | Type | Description |
 | :---- | :---- |:---- |

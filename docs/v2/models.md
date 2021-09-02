@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 모델
+title: JSON Objects and Enums
 nav_order: 7
 parent: v2
 has_children: false
@@ -8,11 +8,11 @@ has_children: false
 ---
 
 
-REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
+REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 
 ------------------------
 
-# Channel Model
+# Channel
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -20,9 +20,9 @@ REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
 | nodeId | String | 컴퓨팅 노드 ID |
 | inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
 | channelName | String | 채널 별칭 |
-| inputType | enum([InputType](models.md#inputtype)) | 입력 비디오 타입 |
-| siblings | [String] | 연결된 채널 id 목록 |
-| status | enum([ChannelStatus](#channelstatus)) | 채널 상태 |
+| inputType | Enum | 입력 비디오 타입(**[InputType](models.md#inputtype)**) |
+| siblings | String[] | 연결된 채널 id 목록 |
+| status | Enum | 채널 상태 (**[ChannelStatus](#channelstatus)**)|
 
 <br><br>
 
@@ -39,9 +39,9 @@ REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| startPoint | [Double] |  첫 번째 점의 X, Y 좌표 비율 (0 ~ 1)| O |
-| middlePoint | [Double] |  중간 점의 X, Y 좌표  비율 (0 ~ 1)| O |
-| endPoint | [Double] |  마지막 점의 X, Y 좌표  비율 (0 ~ 1)| O |
+| startPoint | Double[] |  첫 번째 점의 X, Y 좌표 비율 (0 ~ 1)| O |
+| middlePoint | Double[] |  중간 점의 X, Y 좌표  비율 (0 ~ 1)| O |
+| endPoint | Double[] |  마지막 점의 X, Y 좌표  비율 (0 ~ 1)| O |
 
 
 <br><br>
@@ -50,10 +50,10 @@ REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| verticalPoint1 | [Double] |  세로로 된 직선 1의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
-| verticalPoint2 | [Double] |  세로로 된 직선 2의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
-| horizontalPoint1 | [Double] |  가로로 된 직선 1의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
-| horizontalPoint2 | [Double] |  가로로 된 직선 2의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
+| verticalPoint1 | Double[] |  세로로 된 직선 1의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
+| verticalPoint2 | Double[] |  세로로 된 직선 2의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
+| horizontalPoint1 | Double[] |  가로로 된 직선 1의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
+| horizontalPoint2 | Double[] |  가로로 된 직선 2의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
 
 <br><br>
 
@@ -94,6 +94,17 @@ REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
 | EVT_CROSSWALK_QUEUEING | 횡단보도 대기열 카운팅 |
 
 <br><br> -->
+
+# Functions
+
+컴퓨팅 노드가 사용 가능한 기능들
+
+| Enum | Description |
+| :---- | :---- |
+| FNC_CORE | 핵심 기능 |
+
+<!-- | FNC_ITS | 지능형 교통 시스템 | -->
+
 
 # InputType
 입력 비디오 타입
@@ -146,7 +157,7 @@ REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
 <br><br>
 
 
-# RecentCrashLogs
+<!-- # RecentCrashLogs
 최근 비정상 종료 된 컴퓨팅 노드 기록정보
 
 | Name | Type | Description |
@@ -154,9 +165,21 @@ REST API에서 사용 되는 내부 JSON 오브덱트와 Enum 값들입니다.
 | nodeId | String | 컴퓨팅 노드 ID |
 | crashTime | String | 비정상 종료 시각 |
 
-<br><br>
+<br><br> -->
 
-# error code
+
+
+# Operations
+
+비디오 분석 제어 명령들
+
+| Enum | Description |
+| :---- | :---- |
+| VA_START | 비디오 분석 시작/재개 |
+| VA_STOP | 비디오 분석 중지 |
+| VA_RST | 비디오 분석 중 누적 집계된 값들을 모두 초기화 (즉, ROI 설정 직후 상태로 초기화) |
+
+# Error code
 
 | Value | Description |
 | :---- | :---- |
