@@ -80,7 +80,7 @@ POST /v2/va/control
 # VA_START
 {
     "sourceIp" : "192.168.0.30",
-    "sourcePort" : "40400"
+    "sourcePort" : 40400
     "code" : 0
 }
 
