@@ -21,8 +21,8 @@ POST /v2/va/create-computing-node
 {
   "host": "192.168.0.39",
   "httpPort": 8880,
-  "rpcPort": 33300,
-  "nodeName": "ABNORMAL_DETECTING_NODE"
+  "nodeName": "TEST_SYSTEM_PC",
+  "license": "license-test-code-nkai"
 }
 ```
 | Name | Type | Description | Required |
@@ -31,14 +31,22 @@ POST /v2/va/create-computing-node
 | httpPort | Integer | HTTP 포트번호 | O |
 | rpcPort | Integer | RPC 포트번호 | O |
 | nodeName | String | 노드 닉네임 | X |
+| licnese | String | 라이선스 값 | O |
 <br>
 
 ### Response
 ```
 //Ok
 {
-  "nodeId": "4945bb32",
-  "code": 0
+  "nodeId": "350d8934",
+  "nodeName": "TEST_SYSTEM_PC",
+  "httpHost": "192.168.0.36",
+  "httpPort": 8880,
+  "rpcHost": "192.168.0.36",
+  "rpcPort": 33300,
+  "license": "license-test-code-nkai",
+  "productCode": "NK_API_V2",
+  "releaseDate": "2021-11-09 17:51:55"
 }
 //Already
 {
@@ -52,11 +60,18 @@ POST /v2/va/create-computing-node
   "code": 0
 }
 ```
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- | :----|
-| nodeId | String | 노드 ID | X |
-| message | String | 응답메시지 | X |
-| code | int | 처리 코드 |  O |
+| nodeId | String | 컴퓨팅 노드 ID | O |
+| nodeName | String | 컴퓨팅 노드 이름| O |
+| httpHost | String | http 호스트 | O |
+| httpPort | int | http 포트 | O |
+| rpcHost | String | rpc 호스트 | O |
+| rpcPort | int | rpc 포트 | O |
+| license | String | 라이선스 | O |
+| productCode | String | 제품 코드 | O |
+| releaseDate | String | 제품 정보 | O |
 
 <br><br>
 
@@ -79,32 +94,28 @@ POST /v2/va/get-computing-node
 ### Response
 ```
 {
-  "nodeId": "4945bb32",
-  "nodeName": "NK_PC",
-  "host": "192.168.0.36",
+  "nodeId": "350d8934",
+  "nodeName": "TEST_SYSTEM_PC",
+  "httpHost": "192.168.0.36",
   "httpPort": 8880,
+  "rpcHost": "192.168.0.36",
   "rpcPort": 33300,
-  "productCode": "NKAI",
-  "productVersion": "v1.0.0_v2",
-  "description": "description : beta tester",
-  "licenseValidity": true,
-  "licenseExpired": "2021-11-13 ?? 6:47:14"
+  "license": "license-test-code-nkai",
+  "productCode": "NK_API_V2",
+  "releaseDate": "2021-11-09 17:51:55"
 }
 ```
-
-| Name | Type | Description |
-| :---- | :---- |:---- |
-| nodeId | String | 노드 ID |
-| nodeName | String | 노드 닉네임 |
-| host | String | 호스트 |
-| httpPort | Integer | HTTP 포트번호 |
-| rpcPort | Integer | RPC 포트번호 |
-| productCode | String | 제품 코드 |
-| productVersion | String | 제품 버전 |
-| description | String | 제품 설명 |
-| licenseValidity | Bool | 라이센스 유효 여부 |
-| licenseExpired | String | 라이센스 만료일(YYYY-MM-DD) |
-| functions | Enum[] | (NotYet) 현재 라이센스에서 사용 가능한 기능 목록 (**[Functions](models.md#functions)**)|
+| Name | Type | Description | Required |
+| :---- | :---- |:---- | :----|
+| nodeId | String | 컴퓨팅 노드 ID | O |
+| nodeName | String | 컴퓨팅 노드 이름| O |
+| httpHost | String | http 호스트 | O |
+| httpPort | int | http 포트 | O |
+| rpcHost | String | rpc 호스트 | O |
+| rpcPort | int | rpc 포트 | O |
+| license | String | 라이선스 값 | O |
+| productCode | String | 제품 코드 | O |
+| releaseDate | String | 제품 정보 | O |
 
 
 <br><br>
@@ -125,28 +136,26 @@ POST /v2/va/list-computing-node
 ```
 [
   {
-    "nodeId": "4945bb32",
-    "nodeName": "NK_PC",
-    "host": "192.168.0.36",
+    "nodeId": "350d8934",
+    "nodeName": "TEST_SYSTEM_PC",
+    "httpHost": "192.168.0.36",
     "httpPort": 8880,
+    "rpcHost": "192.168.0.36",
     "rpcPort": 33300,
-    "productCode": "NKAI",
-    "productVersion": "v1.0.0_v2",
-    "description": "description : beta tester",
-    "licenseValidity": true,
-    "licenseExpired": "2021-11-13 ?? 6:47:14"
+    "license": "license-test-code-nkai",
+    "productCode": "NK_API_V2",
+    "releaseDate": "2021-11-09 17:51:55"
   },
   {
-    "nodeId": "14f502f2",
-    "nodeName": "NK_TEST_PC",
-    "host": "192.168.0.31",
+    "nodeId": "350d8934",
+    "nodeName": "TEST_SYSTEM_PC",
+    "httpHost": "192.168.0.36",
     "httpPort": 8880,
+    "rpcHost": "192.168.0.36",
     "rpcPort": 33300,
-    "productCode": "NKAI",
-    "productVersion": "v1.0.0_v2",
-    "description": "description : beta tester",
-    "licenseValidity": true,
-    "licenseExpired": "2020-04-05 ?? 6:50:09"
+    "license": "license-test-code-nkai",
+    "productCode": "NK_API_V2",
+    "releaseDate": "2021-11-09 17:51:55"
   }
 ]
 ```
@@ -163,10 +172,8 @@ POST /v2/va/list-computing-node
 POST /v2/va/update-computing-node
 {
   "nodeId": "14f502f2",
-  "httpPort": 9000,
-  "rpcHost": "192.168.0.33"
-  "rpcPort": 45500,
-  "nodeName": "TEST_NODE"
+  "nodeName": "TEST_NODE",
+  "license" : "license-test-code-nkai"
 }
 ```
 
@@ -175,10 +182,8 @@ POST /v2/va/update-computing-node
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | nodeId | String | 노드 ID |
-| httpPort | Integer | HTTP 포트번호 |
-| rpcHost | String | RPC 호스트 |
-| rpcPort | Integer | RPC 포트번호 |
 | nodeName | String | 노드 닉네임 |
+| license | String | 라이선스 값 |
 
 <br>
 

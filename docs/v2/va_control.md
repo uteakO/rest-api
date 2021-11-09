@@ -17,6 +17,31 @@ has_children: false
 (다각형 영역만을 지원)
 ```
 POST /v2/va/create-roi
+
+{
+  "nodeId": "184fcb3c",
+  "channelId": "72040f36",
+  "roiName": "ROI_NAME",
+  "description": "Loitering Event",
+  "roiDots": [
+    {
+      "X": 0.0,
+      "Y": 0.0
+    },
+    {
+      "X": 1.0,
+      "Y": 0.0
+    },
+    {
+      "X": 1.0,
+      "Y": 1.0
+    },
+    {
+      "X": 0.0,
+      "Y": 1.0
+    }
+  ]
+}
 ```
 <br>
 
@@ -24,13 +49,14 @@ POST /v2/va/create-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
+| nodeId | String | 컴퓨팅 노드 ID | O |
 | channelId | String | 채널 ID | O |
-| roiNmae | String | 이벤트 이름 | O |
+| roiName | String | 이벤트 이름 | O |
 | description | String | 관심 영역 설명 | X |
+| roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
+| feature | string | 영역 속성([RoiFeature](#roi-feature)) | X |
 | stayTime | Integer | 발생 지연 시간 | X |
 | numberOf | Integer | 최소 발생 객체수 조건 | X |
-| feature | string | 영역 속성([RoiFeature](#roi-feature)) | O |
-| roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
 
 <br/>
 
