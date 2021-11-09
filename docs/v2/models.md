@@ -16,12 +16,10 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| channelId | String | 채널 ID |
-| nodeId | String | 컴퓨팅 노드 ID |
-| inputUri | String | 입력 비디오 URI(RTSP 주소 또는 로컬파일 경로) |
-| channelName | String | 채널 별칭 |
-| inputType | Enum | 입력 비디오 타입(**[InputType](models.md#inputtype)**) |
-| siblings | String[] | 연결된 채널 id 목록 |
+| channelId | string | 채널 ID |
+| inputUri | string | 입력 영상 주소 |
+| channelName | string | 채널 이름 |
+| inputType | int | 입력 영상 종류(**[InputType](models.md#inputtype)**) |
 | status | Enum | 채널 상태 (**[ChannelStatus](#channelstatus)**)|
 
 <br><br>
@@ -32,30 +30,6 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | :---- | :---- |
 | CH_STATUS_NORMAL | 정상 |
 | CH_STATUS_INPUT_DEVICE_CONNECTION_LOST | 입력장치 연결 끊김 |
-
-<br><br>
-
-# DistortionPoint
-
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| startPoint | Double[] |  첫 번째 점의 X, Y 좌표 비율 (0 ~ 1)| O |
-| middlePoint | Double[] |  중간 점의 X, Y 좌표  비율 (0 ~ 1)| O |
-| endPoint | Double[] |  마지막 점의 X, Y 좌표  비율 (0 ~ 1)| O |
-
-
-<br><br>
-
-# CalibrationPoint
-
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| verticalPoint1 | Double[] |  세로로 된 직선 1의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
-| verticalPoint2 | Double[] |  세로로 된 직선 2의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
-| horizontalPoint1 | Double[] |  가로로 된 직선 1의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
-| horizontalPoint2 | Double[] |  가로로 된 직선 2의 시작, 끝 X, Y 좌표 비율 (0 ~ 1)| O |
-
-<br><br>
 
 # ObjectType
 
@@ -71,7 +45,7 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 
 <br><br>
 
-<!-- # EventType
+# EventType
 
 | Enum | Description |
 | :---- | :---- |
@@ -93,7 +67,7 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | EVT_TRAFFIC_ACTUATED_SIGNAL | 교통 감응신호 (rs232 통신으로 옵션보드로 차량 유무 신호 전송) |
 | EVT_CROSSWALK_QUEUEING | 횡단보도 대기열 카운팅 |
 
-<br><br> -->
+<br><br>
 
 # Functions
 
