@@ -26,6 +26,7 @@ POST /v2/va/control
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
+| nodeId | String | Node ID | O |
 | channelId | String | 채널 ID | O |
 | operation | Enum | 제어 명령 (**[Operations](../models.md#operations)**) | O |
 | parameter | String[] | 필요시 파라미터 전달 | X |
@@ -55,18 +56,21 @@ POST /v2/va/control
 
 # VA_START
 {
+    "nodeId" : "Aav2315", 
     "channelId" : "X1ashF0t",
     "operation" : "VA_START",
 }
 
 # VA_STOP
 {
+    "nodeId" : "Aav2315",
     "channelId" : "X1ashF0t",
     "operation" : "VA_STOP",
 }
 
 # VA_RST
 {
+    "nodeId" : "Aav2315",
     "channelId" : "X1ashF0t",
     "operation" : "VA_RST",
     "parameter" : ["roiId1", "roiId2", "roiId3"]
