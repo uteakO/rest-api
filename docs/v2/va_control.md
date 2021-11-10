@@ -15,6 +15,10 @@ has_children: false
 # ROI 생성
 지정한 채널에 관심 영역을 정의하고, 관심 영역 내 분석 알고리즘을 설정합니다.
 (다각형 영역만을 지원)
+
+<br>
+
+### Request
 ```
 POST /v2/va/create-roi
 
@@ -23,6 +27,7 @@ POST /v2/va/create-roi
   "channelId": "72040f36",
   "roiName": "ROI_NAME",
   "description": "Loitering Event",
+  "eventtype": "EVT_LOITERING",
   "roiDots": [
     {
       "X": 0.0,
@@ -43,24 +48,33 @@ POST /v2/va/create-roi
   ]
 }
 ```
-<br>
-
-### Request
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID | O |
 | channelId | String | 채널 ID | O |
 | roiName | String | 이벤트 이름 | O |
-| description | String | 관심 영역 설명 | X |
 | roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
-| feature | string | 영역 속성([RoiFeature](#roi-feature)) | X |
+| eventType | Enum | 영역 속성([InputType](models.md#EventType))| O |
+| description | String | 관심 영역 설명 | X |
 | stayTime | Integer | 발생 지연 시간 | X |
 | numberOf | Integer | 최소 발생 객체수 조건 | X |
 
 <br/>
 
 ### Response
+```
+// Ok
+{
+  "roiId": "88e2a515",
+  "code": 0
+}
+// Fail
+{
+    "code" : 300,
+    "message" : "Failed Create Roi"
+}
+```
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
@@ -88,105 +102,61 @@ POST /v2/va/create-roi
 | direction | String | 방향 설정 | O |
 | target | JsonObject[] | 검출 객체([ObjectType](#object-type)) | O |
 
-<br/>
-
-### Sample
-### Request
-<!-- 
-    - 무조건 polygon 형태 유지.
-    - 영역 이벤트는 어떻게 처리할 것인가... 
-      (혼잡도 레벨, 정지)
--->
-```
-{
-    "channelId" : "X1ashF0t",
-    "roiName" : "event_accident_roon",
-    "description" : "accident in conference room",
-    "stayTime" : 5,  
-    "numberOf" : 1,  
-    "feature" : true, 
-    "roiDots" : 
-    [
-        {
-           "X" : 0,
-           "y" : 0,
-           "lineUntilNextDot" : 
-           {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Human","Vehicle"]
-           }
-        },
-        {
-           "X" : 0.85,
-           "y" : 0,
-           "lineUntilNextDot" : 
-           {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Human"]
-           }
-        },
-        {
-           "X" : 1,
-           "y" : 0.9,
-           "lineUntilNextDot" : 
-           {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Vehicle"]
-           }
-        },
-        {
-           "X" : 0,
-           "y" : 0.96,
-           "lineUntilNextDot" : 
-           {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Human","Vehicle"]
-           }
-        }
-    ]
-}
-```
-<br>
-
-
-### Response
-
-```
-#성공
-{
-    "roiId" : "Vif7f02j"
-    "code" : 0
-}
-#실패
-{
-    "code" : 300,
-    "message" : "fail"
-}
-```
-
 <br><br>
-
 
 # ROI 조회
 ROI를 조회합니다.
-```
-POST /v2/va/get-roi
-```
 <br>
 
 ### Request
+```
+POST /v2/va/get-roi
+
+{
+  "nodeId": "c6a45bc6",
+  "channelId": "e84fcac4",
+  "roiId": "88e2a515"
+}
+```
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
+| nodeId | String | 컴퓨팅 노드 ID | O |
+| channelId | String | 채널 ID | O |
 | roiId | String | 관심 영역 ID | O |
 
 <br>
 
 ### Response
+```
+{
+  "roiId": "88e2a515",
+  "name": "ROI_NAME",
+  "description": "Loitering Event",
+  "stayTime": 0.0,
+  "numberOf": 0,
+  "eventType": "EVT_LOITERING",
+  "roiDots": [
+    {
+      "x": 0.0,
+      "y": 0.0
+    },
+    {
+      "x": 1.0,
+      "y": 0.0
+    },
+    {
+      "x": 1.0,
+      "y": 1.0
+    },
+    {
+      "x": 0.0,
+      "y": 1.0
+    }
+  ],
+  "code": 0
+}
+```
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -194,189 +164,84 @@ POST /v2/va/get-roi
 | description | String | 관심 영역 설명 | O |
 | stayTime | Integer | 발생 지연 시간 | O |
 | numberOf | Integer | 최소 발생 객체수 조건 | O |
-| feature | string | 영역 속성([RoiFeature](#roi-feature)) | O |
+| eventType | Enum | 영역 속성([InputType](models.md#EventType))| O |
 | roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
-
-<br>
-
-<!--| shape | [RoiShape](#roishape) | ROI 형태 |-->
-### Sample
-
-### Request
-```
-POST /v2/va/get-roi
-
-{
-    "channelId" : "X1ashF0t",
-    "roiId" : "Vif7f02j"
-}
-```
-
-### Response
-```
-# 성공
-{
-    "roiName" : "event_accident_roon",
-    "description" : "accident in conference room",
-    "stayTime" : 5,  
-    "numberOf" : 1,  
-    "feature" : true, 
-    "roiDots" : 
-    [
-        {
-           "X" : 0,
-           "y" : 0,
-           "lineUntilNextDot" : 
-           {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Human","Vehicle"]
-           }
-        },
-        {
-           "X" : 0.85,
-           "y" : 0,
-           "lineUntilNextDot" : 
-           {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Human"]
-           }
-        },
-        {
-           "X" : 1,
-           "y" : 0.9,
-           "lineUntilNextDot" : 
-           {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Vehicle"]
-           }
-        },
-        {
-           "X" : 0,
-           "y" : 0.96,
-           "lineUntilNextDot" : 
-           {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Human","Vehicle"]
-           }
-        }
-    ],
-    "code" : 0
-}
-
-# 실패
-{
-    "code" : 300
-    "message" : "fail"
-}
-```
+| code | Integer | 오류 코드 ([Error Code](models.md#error-code)) | O|
+| message | String | 오류 메시지 |X|
 
 <br><br>
 
 # 채널 내 ROI 목록 조회
 지정한 채널에 추가 된 모든 ROI들을 조회합니다.
+
+<br>
+
+### Request
 ```
 POST /v2/va/list-roi
+
+{
+    "nodeId":"c6a45bc6"
+}
 ```
-
-<br>
-
-### Request
-
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
+| nodeId | String | 컴퓨팅 노드 ID | O |
 | channelId | String | 채널 ID | O |
+| roiId | String | 관심 영역 ID | O |
 
 <br>
 
 ### Response
+```
+{
+  "channels": [
+    {
+      "channelId": "e84fcac4",
+      "inputUri": "rtsp://192.168.0.70/vod/pertest_5m_15m_fall",
+      "channelName": "TEST_CHANNEL_NAME",
+      "inputType": 0,
+      "status": 0
+    }
+  ],
+  "code": 0
+}
+```
 
 [ROI 조회](#roi-조회) 응답의 배열입니다.
-
-<br>
-
-### Sample
-### Request
-```
-POST /v2/va/get-roi
-
-{
-    "channelId" : "X1ashF0t",
-}
-```
-
-### Response
-```
-# 성공
-{
-    "roiList": [{
-        "roiName" : "event_accident_roon",
-        "description" : "accident in conference room",
-        "stayTime" : 5,  
-        "numberOf" : 1,  
-        "feature" : true, 
-        "roiDots" : 
-        [{
-               "X" : 0,
-               "y" : 0,
-               "lineUntilNextDot" : 
-               {
-                    "disable" : false,
-                    "direction" : "enter",
-                    "target" : ["Human","Vehicle"]
-                }
-            },
-            {
-                "X" : 0.85,
-                "y" : 0,
-                "lineUntilNextDot" : 
-                {
-                    "disable" : false,
-                    "direction" : "enter",
-                    "target" : ["Human"]
-                }
-            },
-            {
-                "X" : 1,
-                "y" : 0.9,
-                "lineUntilNextDot" : 
-                {
-                    "disable" : false,
-                    "direction" : "enter",
-                    "target" : ["Vehicle"]
-                }
-            },
-            {
-                "X" : 0,
-                "y" : 0.96,
-                "lineUntilNextDot" : 
-                {
-                    "disable" : false,
-                    "direction" : "enter",
-                    "target" : ["Human","Vehicle"]
-                }
-            }
-        ]}
-    ],
-    "code" : 0
-}
-
-# 실패
-{
-    "code" : 300
-    "message" : "fail"
-}
-```
 
 <br><br>
 
 # ROI 수정
+(추적기 리셋 오류 발생중..)
 ROI 설정을 수정합니다.
 ```
 POST /v2/va/update-roi
+
+{
+  "nodeId": "c6a45bc6",
+  "channelId": "e84fcac4",
+  "roiId": "88e2a515",
+  "roiNmae" : "UPDATE_ROI",
+  "roiDots": [
+    {
+      "x": 0.0,
+      "y": 0.0
+    },
+    {
+      "x": 0.84,
+      "y": 0.0
+    },
+    {
+      "x": 0.84,
+      "y": 0.22
+    },
+    {
+      "x": 0.0,
+      "y": 0.5
+    }
+  ],
+}
 ```
 
 <br>
@@ -385,6 +250,7 @@ POST /v2/va/update-roi
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
+| nodeId | String | 컴퓨팅 노드 ID | O |
 | channelId | String | 채널 ID | O |
 | roiId | String | 관심 영역 ID | O |
 | roiNmae | String | 이벤트 이름 | X |
@@ -399,114 +265,58 @@ POST /v2/va/update-roi
 <br>
 
 ### Response
+```
+{
+    "roiId": "88e2a515",
+    "code": 0
+}
+```
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
+| roiId | String | 관심 영역 ID |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
-
-<br>
-
-### Sample
-### Request
-```
-POST /v2/va/update-roi
-
-{
-    "channelId" : "X1ashF0t",
-    "roiId" : "Vif7f02j",
-    "roiName" : "event_accident_roon",
-    "description" : "accident in conference room",
-    "stayTime" : 5,  
-    "numberOf" : 1,  
-    "feature" : true, 
-    "roiLines" : [
-        {
-           "lineId" : "Vif7f02j_0",
-           "startPoint" : [0,0],
-           "endPoint" : [0,0],
-           "lineUntilNextDot" : 
-           {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Vehicle"]
-            }
-        },
-        {
-           "lineId" : "Vif7f02j_1",
-           "startPoint" : [0,0],
-           "endPoint" : [0,0],
-           "lineUntilNextDot" : 
-            {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Vehicle"]
-            }
-        },
-        {
-           "lineId" : "Vif7f02j_2",
-           "startPoint" : [0,0],
-           "endPoint" : [0,0],
-           "lineUntilNextDot" : 
-           {
-               "disable" : false,
-               "direction" : "enter",
-               "target" : ["Vehicle"]
-           }
-        },
-        {
-           "lineId" : "Vif7f02j_3",
-           "startPoint" : [0,0],
-           "endPoint" : [0,0],
-           "lineUntilNextDot" : 
-            {
-                "disable" : false,
-                "direction" : "enter",
-                "target" : ["Human","Vehicle"]
-            }
-        }
-    ]
-}
-```
-
-#### Response
-```
-# 성공
-{
-    "code" : 0
-}
-
-# 실패
-{
-    "code" : 300
-    "message" : "fail"
-}
-```
 
 <br><br>
 
 # ROI 삭제
 ROI 설정을 삭제합니다.
-```
-POST /v2/va/remove-roi
-```
 
 <br>
 
 ### Request
+```
+POST /v2/va/remove-roi
 
+{
+  "nodeId": "c6a45bc6",
+  "channelId": "e84fcac4",
+  "roiIds": [
+       "88e2a515",
+       "19389bdc"
+    ]
+}
+```
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
+| nodeId | String | 컴퓨팅 노드 ID | O |
 | channelId | String | 채널 ID | O |
-| roiId | String[] | 관심 영역 ID 리스트 | O |
+| roiId | String[] | 관심 영역 ID | O |
 
 
 <br>
 
 ### Response
-
+```
+{
+  "roiId": "e84fcac4",
+  "code": 0
+}
+```
 | Name | Type | Description |
 | :---- | :---- |:---- |
+| roiId | String | 관심 영역 ID |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 
@@ -517,48 +327,32 @@ POST /v2/va/remove-roi
 
 <br><br>
 
-### Sample
-#### Request
-```
-POST /v2/va/remove-roi
-
-{
-    "channelId" : "X1ashF0t",
-    "roiId" : ["Vif7f02j"]
-}
-```
-
-#### Response
-```
-# 성공
-{
-    "code" : 0
-}
-
-# 실패
-{
-    "code" : 300
-    "message" : "fail"
-}
-```
-
-<br><br>
-
 # Link
 사용자가 직접 설정한 Roi 간의 이벤트 조건을 만드는 기능
 
 # ROI Link 생성
 영역 간의 이벤트 연계 기능을 추가할수 있습니다.
-```
-POST /v2/va/create-link
-```
 
 <br>
 
 ### Request
+```
+POST /v2/va/create-link
+{
+  "nodeId": "c6a45bc6",
+  "channelId": "b501189c",
+  "name": "link0_0"
+  "roiLink": [
+      "e84fcac4", 
+      "asdasd11"
+    ]
+}
+
+```
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
+| nodeId | String | 컴퓨팅 노드 ID | O |
 | channelId | String | 채널 ID | O |
 | name | String | 연계 이벤트 이름 | O |
 | roiLink | JsonObject[] | 연계 영역 설정 ([Link](#link)) | O |
@@ -574,77 +368,55 @@ POST /v2/va/create-link
 <br>
 
 ### Response
-
+```
+{
+  "linkId": "bascd123be",
+  "code": 0
+}
+```
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| linkId | String | 관심 영역 ID |
+| linkId | String | 링크 ID |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 
-<br>
-
-----------------
-
-### Sample
-#### Request
-
-```
-{
-    "channelId" : "X1ashF0t",
-    "name" : "CustomEvent", //연계 이벤트 이름
-    "roiLink" : 
-    [
-        {
-            "roiId": "Gd2da1",
-            "nextRoiRealDistance" : 50,
-            "nextRoiArrivalWaitingTime" : 5
-        },
-        {
-            "roiId": "A23vds",
-        }
-    ]
-}
-```
-
-#### Response
-
-```
-#성공
-{
-    "linkId" : "Bd2fha8"
-    "code" : 0
-}
-#실패
-{
-    "code" : 300,
-    "message" : "fail"
-}
-```
 <br><br>
 
 # ROI Link 조회
 ROI를 조회합니다.
-```
-POST /v2/va/get-link
-```
+
 <br>
 
 ### Request
+```
+POST /v2/va/get-link
 
+{
+    "nodeId": "c6a45bc6",
+    "channelId": "b501189c",
+    "linkId" : "bascd123be"
+}
+```
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
+| nodeId | String | 컴퓨팅 노드 ID | O |
 | channelId | String | 채널 ID | O |
 | linkId | String | 연계 이벤트 ID | O |
 
 <br>
 
 ### Response
-
+```
+{
+    "linkId" : "bascd123be",
+    "code" : 0
+}
+```
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | linkId | String | 연계 이벤트 ID | O |
-| name | String | 연계 이벤트 이름 | O |
-| roiLink | JsonObject[] | 연계 영역 설정 ([Link](#link)) | O |
+| code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
+| message | String | 오류 메시지 |
 
 <br>
 
@@ -656,10 +428,16 @@ POST /v2/va/get-link
 POST /v2/va/get-roi
 
 {
+    "node": "bascd123be"
     "channelId" : "X1ashF0t",
-     "linkId":"Bd2fha8"
+    "linkId":"Bd2fha8"
 }
 ```
+| Name | Type | Description | Required |
+| :---- | :---- |:---- |:---- |
+| nodeId | String | 컴퓨팅 노드 ID | O |
+| channelId | String | 채널 ID | O |
+| linkId | String | 연계 이벤트 ID | O |
 
 #### Response
 ```
