@@ -46,7 +46,8 @@ POST /v2/va/create-computing-node
   "rpcPort": 33300,
   "license": "license-test-code-nkai",
   "productCode": "NK_API_V2",
-  "releaseDate": "2021-11-09 17:51:55"
+  "releaseDate": "2021-11-09 17:51:55",
+  "code" : 0
 }
 //Already
 {
@@ -56,8 +57,8 @@ POST /v2/va/create-computing-node
 }
 //Fail
 {
-  "message": "Failed Create Roi ID",
-  "code": 0
+  "message": "Failed Create Node ID",
+  "code": 100
 }
 ```
 
@@ -66,12 +67,14 @@ POST /v2/va/create-computing-node
 | nodeId | String | 컴퓨팅 노드 ID | O |
 | nodeName | String | 컴퓨팅 노드 이름| O |
 | httpHost | String | http 호스트 | O |
-| httpPort | int | http 포트 | O |
+| httpPort | Integer | http 포트 | O |
 | rpcHost | String | rpc 호스트 | O |
-| rpcPort | int | rpc 포트 | O |
+| rpcPort | Integer | rpc 포트 | O |
 | license | String | 라이선스 | O |
 | productCode | String | 제품 코드 | O |
 | releaseDate | String | 제품 정보 | O |
+| code | Integer | 요청 응답 | O |
+| message | String | 처리 메시지 | X |
 
 <br><br>
 
@@ -93,6 +96,7 @@ POST /v2/va/get-computing-node
 
 ### Response
 ```
+// Ok
 {
   "nodeId": "350d8934",
   "nodeName": "TEST_SYSTEM_PC",
@@ -102,7 +106,14 @@ POST /v2/va/get-computing-node
   "rpcPort": 33300,
   "license": "license-test-code-nkai",
   "productCode": "NK_API_V2",
-  "releaseDate": "2021-11-09 17:51:55"
+  "releaseDate": "2021-11-09 17:51:55",
+  "code": 0
+}
+
+// Fail
+{
+    "code": 101
+    "message": "Not Found NodeId"
 }
 ```
 | Name | Type | Description | Required |
@@ -116,6 +127,8 @@ POST /v2/va/get-computing-node
 | license | String | 라이선스 값 | O |
 | productCode | String | 제품 코드 | O |
 | releaseDate | String | 제품 정보 | O |
+| code | Integer | 요청 응답 | O |
+| message | String | 처리 메시지 | X |
 
 
 <br><br>

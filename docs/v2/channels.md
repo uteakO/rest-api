@@ -29,7 +29,7 @@ POST /v2/va/register-channel
   "nodeId": "5c009c52",
   "channelName": "TEST_CHANNEL_NAME",
   "inputUri": "rtsp://192.168.0.70/vod/pertest_5m_15m_fall",
-  "inputType": null
+  "inputType": null,
 }
 ```
 
@@ -39,6 +39,7 @@ POST /v2/va/register-channel
 | channelName | String | 채널 별칭 | O |
 | inputUri | String | 입력 영상 URI (RTSP 주소, 파일 경로) | O |
 | inputType | Enum | 입력 영상 종류 (**[InputType](models.md#inputtype)**) | O |
+
 
 <br>
 
@@ -103,12 +104,13 @@ POST /v2/va/get-channel
   "inputUri": "rtsp://192.168.0.70/vod/pertest_5m_15m_fall",
   "channelName": "TEST_CHANNEL_NAME",
   "inputType": 0,
-  "status": 0
+  "status": 0,
+  "code": 0,
 }
 
 //Fail
 {
-    "code" : 404
+    "code" : 202
     "message" : "ChannelId not exists"
 }
 ```
