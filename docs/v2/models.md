@@ -31,6 +31,8 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | CH_STATUS_NORMAL | 정상 |
 | CH_STATUS_INPUT_DEVICE_CONNECTION_LOST | 입력장치 연결 끊김 |
 
+<br>
+
 # ObjectType
 
 | Enum | Description |
@@ -43,7 +45,32 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | FLAME | 불꽃 |
 | SMOKE | 연기 |
 
-<br><br>
+<br>
+
+# Roi Feature  
+
+| Enum | Description |
+| :---- | :---- |
+| ALL | 내부/외부 객체 감지 |
+| INSIDE | 내부 발생 감지 |
+| OUTSIDE | 외부 발생 감지 |
+| IGNORE | 비감지 |
+
+<br>
+
+# Object Type
+
+| Enum | Description |
+| :---- | :---- |
+| PERSON | 사람 |
+| CAR | 일반 차량 |
+| MOTOCYCLE | 오토바이 |
+| BUS | 대형 버스 |
+| TRUCK | 트럭 |
+| FLAME | 불꽃 |
+| SMOKE | 연기 |
+
+<br>
 
 # EventType
 

@@ -231,6 +231,7 @@ POST /v2/va/remove-computing-node
   "nodeId": "4945bb32",
 }
 ```
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String |노드 ID | O |
@@ -249,6 +250,7 @@ POST /v2/va/remove-computing-node
   "code": 400
 }
 ```
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | nodeId | String |노드 ID |

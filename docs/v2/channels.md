@@ -52,10 +52,11 @@ POST /v2/va/register-channel
 }
 // Fail
 {
-    "code": 400,
-    "message": "Authentication failed"
+    "code": 102,
+    "message": "Not Found "
 }
 ```
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | channelId | String | 채널 ID |
@@ -89,6 +90,7 @@ POST /v2/va/get-channel
   "channelId": "X1ashF0t"
 }
 ```
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID | O |
@@ -136,6 +138,7 @@ POST /v2/va/list-channel
     "nodeId" : "5c009c52"
 }
 ```
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID | O |
@@ -163,6 +166,7 @@ POST /v2/va/list-channel
     ]
 }
 ```
+
 "[Channel](models.md#channel)"의 배열을 반환합니다.
 
 <br><br>
@@ -185,6 +189,7 @@ POST /v2/va/update-channel
   "inputType": 0
 }
 ```
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID | O |
@@ -350,6 +355,7 @@ POST /v2/va/snapshot
     "channelId" : "6a694f0e"
 }
 ```
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | channelId | String | 채널 ID | O |
@@ -370,6 +376,7 @@ POST /v2/va/snapshot
     "message": "Channel X1ashF0t not exists"
 }
 ```
+
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | imageData | String | 영상 데이터 (jpeg -> base64인코딩) |
