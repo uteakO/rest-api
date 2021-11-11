@@ -1,8 +1,8 @@
 ---
 layout: default
 title: ROI Link
-nav_order: 3
-parent: 비디오 분석 설정
+nav_order: 4
+parent: 분석 영역 연동 설정
 grand_parent: v2
 permalink: /docs/v2/va_control/roi_link
 ---

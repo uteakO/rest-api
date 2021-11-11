@@ -1,7 +1,7 @@
 ---
 layout: default
 title: JSON Objects and Enums
-nav_order: 7
+nav_order: 5
 parent: v2
 has_children: false
 # permalink: /docs/v2

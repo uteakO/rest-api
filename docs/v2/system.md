@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 시스템
-nav_order: 3
+nav_order: 6
 parent: v2
 has_children: false
 # permalink: /docs/v2

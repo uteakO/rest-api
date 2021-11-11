@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 비디오 분석 결과
-nav_order: 6
+nav_order: 8
 parent: v2
 has_children: false
 # permalink: /docs/v2
