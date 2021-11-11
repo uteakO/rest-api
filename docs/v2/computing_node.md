@@ -25,6 +25,7 @@ POST /v2/va/create-computing-node
   "license": "license-test-code-nkai"
 }
 ```
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | host | String | 호스트주소 | O |
@@ -32,6 +33,7 @@ POST /v2/va/create-computing-node
 | rpcPort | Integer | RPC 포트번호 | O |
 | nodeName | String | 노드 닉네임 | X |
 | licnese | String | 라이선스 값 | O |
+
 <br>
 
 ### Response
@@ -87,6 +89,7 @@ POST /v2/va/get-computing-node
   "nodeId": "4945bb32",
 }
 ```
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String |노드 ID | O |
@@ -116,6 +119,7 @@ POST /v2/va/get-computing-node
     "message": "Not Found NodeId"
 }
 ```
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- | :----|
 | nodeId | String | 컴퓨팅 노드 ID | O |
