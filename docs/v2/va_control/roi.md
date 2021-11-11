@@ -2,7 +2,7 @@
 layout: default
 title: ROI
 nav_order: 2
-parent: 분석 영역 설정
+parent: 영상 분석 설정
 grand_parent: v2
 permalink: /docs/v2/va_control/roi
 ---
