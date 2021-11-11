@@ -142,6 +142,7 @@ POST /v2/va/list-channel
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID | O |
+
 <br>
 
 
@@ -310,6 +311,7 @@ POST /v2/va/callibrate
 | secondLine | JsonObject | 왜곡 보정을 위한 두번째 직선 (**[Line](#Line)**)| O |
 
 ### Line ###
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | startPointX | double | 시작 위치 X좌표 | O |

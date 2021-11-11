@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 비디오 분석 설정
+title: 영상 분석 설정
 nav_order: 4
 parent: v2
 has_children: true
@@ -9,4 +9,4 @@ has_children: true
 ---
 
 
-비디오 분석 설정에 대한 API입니다.
+영상 분석 설정에 대한 API입니다.

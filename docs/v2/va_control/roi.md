@@ -2,7 +2,7 @@
 layout: default
 title: ROI
 nav_order: 2
-parent: 비디오 분석 설정
+parent: 분석 영역 설정
 grand_parent: v2
 permalink: /docs/v2/va_control/roi
 ---
@@ -184,6 +184,7 @@ POST /v2/va/list-roi
     "nodeId":"c6a45bc6"
 }
 ```
+
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID | O |
@@ -213,8 +214,14 @@ POST /v2/va/list-roi
 <br><br>
 
 # ROI 수정
+
 (추적기 리셋 오류 발생중..)
 ROI 설정을 수정합니다.
+
+<br>
+
+### Request
+
 ```
 POST /v2/va/update-roi
 
@@ -243,10 +250,6 @@ POST /v2/va/update-roi
   ],
 }
 ```
-
-<br>
-
-### Request
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
@@ -282,8 +285,6 @@ POST /v2/va/update-roi
 
 # ROI 삭제
 ROI 설정을 삭제합니다.
-
-<br>
 
 ### Request
 ```

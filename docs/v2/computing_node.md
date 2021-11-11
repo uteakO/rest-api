@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 컴퓨팅 노드
-nav_order: 2
+nav_order: 1
 parent: v2
 has_children: false
 # permalink: /docs/v2
