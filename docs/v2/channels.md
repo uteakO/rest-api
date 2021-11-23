@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 채널 관리
-nav_order: 2
+nav_order: 3
 parent: v2
 has_children: false
 # permalink: /docs/v2
