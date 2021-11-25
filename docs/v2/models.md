@@ -44,6 +44,7 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | TRUCK | 트럭 |
 | FLAME | 불꽃 |
 | SMOKE | 연기 |
+| FACE | 얼굴 |
 
 <br>
 
@@ -55,20 +56,6 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | INSIDE | 내부 발생 감지 |
 | OUTSIDE | 외부 발생 감지 |
 | IGNORE | 비감지 |
-
-<br>
-
-# Object Type
-
-| Enum | Description |
-| :---- | :---- |
-| PERSON | 사람 |
-| CAR | 일반 차량 |
-| MOTOCYCLE | 오토바이 |
-| BUS | 대형 버스 |
-| TRUCK | 트럭 |
-| FLAME | 불꽃 |
-| SMOKE | 연기 |
 
 <br>
 
@@ -91,7 +78,6 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | EVT_STOP_VEHICLE_COUNTING | 정지 차량 카운팅 |
 | EVT_SIGNAL_WAITING_TIME | 신호 대기 시간 |
 | EVT_PARKING_SPACE | 주차공간 점유 여부 검출 |
-| EVT_TRAFFIC_ACTUATED_SIGNAL | 교통 감응신호 (rs232 통신으로 옵션보드로 차량 유무 신호 전송) |
 | EVT_CROSSWALK_QUEUEING | 횡단보도 대기열 카운팅 |
 
 <br><br>
@@ -178,7 +164,7 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | :---- | :---- |
 | VA_START | 비디오 분석 시작/재개 |
 | VA_STOP | 비디오 분석 중지 |
-| VA_RST | 비디오 분석 중 누적 집계된 값들을 모두 초기화 (즉, ROI 설정 직후 상태로 초기화) |
+| VA_RESET | 비디오 분석 중 누적 집계된 값들을 모두 초기화 (즉, ROI 설정 직후 상태로 초기화) |
 
 # Error code
 

@@ -25,9 +25,9 @@ POST /v2/va/create-roi
 {
   "nodeId": "184fcb3c",
   "channelId": "72040f36",
+  "eventType": "EVT_LOITERING",
   "roiName": "ROI_NAME",
   "description": "Loitering Event",
-  "eventtype": "EVT_LOITERING",
   "roiDots": [
     {
       "X": 0.0,
@@ -55,7 +55,7 @@ POST /v2/va/create-roi
 | channelId | String | 채널 ID | O |
 | roiName | String | 이벤트 이름 | O |
 | roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
-| eventType | Enum | 영역 속성([InputType](models.md#EventType))| O |
+| eventType | Enum | 영역 속성([EventType](models.md#EventType))| O |
 | description | String | 관심 영역 설명 | X |
 | stayTime | Integer | 발생 지연 시간 | X |
 | numberOf | Integer | 최소 발생 객체수 조건 | X |
@@ -164,7 +164,7 @@ POST /v2/va/get-roi
 | description | String | 관심 영역 설명 | O |
 | stayTime | Integer | 발생 지연 시간 | O |
 | numberOf | Integer | 최소 발생 객체수 조건 | O |
-| eventType | Enum | 영역 속성([InputType](models.md#EventType))| O |
+| eventType | Enum | 영역 속성([EventType](models.md#EventType))| O |
 | roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) | O|
 | message | String | 오류 메시지 |X|
