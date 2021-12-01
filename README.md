@@ -19,3 +19,6 @@ bundle exec jekyll serve
 브라우저에서 `localhost:4000` 주소로 접속
 
 md파일 변경 후, 강력 새로고침으로
+
+
+github page : https://nextk-developer.github.io/rest-api/
