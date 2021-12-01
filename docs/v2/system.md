@@ -50,83 +50,42 @@ POST /v2/va/get-system-status
 ```
 # 성공
 {
-    "systems":[{
-        "nodeId": "vgj3d0Aj",
-        "version" :{
-            "software" : "1.0.0",
-            "firmware" : "Windows 10 Build 19042.1165",
-            "gpuModel" : "RTX 2060",
-            "gpuVersion" : "462.75",
-            "detectorModel": {
-                "face" : "1.0.0",
-                "human" : "1.1.0"
+    "systems" : 
+    [
+        {
+            "nodeId": "ae7255c0",
+            "version": {
+                "software": "NKProcess",
+                "detectorModel": [
+                    "Normal"
+                ],
+                "firmware": "firmware_20211125 05:47:46",
+                "gpuModel": "NVIDIA GeForce RTX 3070 Laptop GPU",
+                "gpuVersion": "9984",
+                "disk": "C:\\"
+            },
+            "countVAChannels": 1,
+            "performance": {
+                "cpuUsage": 26.82,
+                "gpuUsage": 13.4,
+                "memoryUsage": 51.54,
+                "memoryTotal": 34110451712.0,
+                "memoryFree": 16507592704.0,
+                "diskUsage": 64.23,
+                "diskTotal": 977443745792.0,
+                "diskFree": 349605699584.0
             }
-        },
-        "channelsInVaRunning": 2,
-        "systemWarnings": [],
-        "channelsInWarning": [],
-        "performance" :{
-            "cpuUsage": 63.2,
-            "gpuUsage": 81.1,
-            "memoryUsage": 42.0,
-            "diskUsage": 4.8
-        },
-        "code" : 0
-    },
-    {
-        "nodeId": "Boa9dl19",
-        "version" :{
-            "software" : "1.1.0",
-            "firmware" : "ubuntu linux 30.2.1",
-            "gpuModel" : "RTX 3060",
-            "gpuVersion" : "462.75",
-            "detectorModel": {
-                "face" : "1.0.0",
-                "human" : "1.1.0"
-            }
-
-        },
-        "channelsInVaRunning": 1,
-        "systemWarnings": [],
-        "channelsInWarning": [],
-        "performance" :{
-            "cpuUsage": 63.2,
-            "gpuUsage": 81.1,
-            "memoryUsage": 42.0,
-            "diskUsage": 4.8
-        },
-        "code" : 0
-    }]  
+        }
+    ],
+  "code": 0
 }
 ```
 
 ```
 # 실패
 {
-    "systems":[
-        "nodeId": "Boa9dl0",
-        "code": 8,
-        "message": "can not connect node Boa9dl0"
-    },
-    {
-        "nodeId": "Boa9dl19",
-        "version" :{
-            "software" : "1.1.0",
-            "firmware" : "ubuntu linux 30.2.1",
-            "gpuModel" : "RTX 3060",
-            "gpuVersion" : "462.75" 
-
-        },
-        "channelsInVaRunning": 1,
-        "systemWarnings": [],
-        "channelsInWarning": [],
-        "performance" :{
-            "cpuUsage": 63.2,
-            "gpuUsage": 81.1,
-            "memoryUsage": 42.0,
-            "diskUsage": 4.8
-        }
-    }]  
+    "code": 8,
+    "message": "can not connect node Boa9dl0"
 }
 ```
 

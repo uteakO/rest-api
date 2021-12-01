@@ -141,7 +141,24 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | gpuVersion | String | GPU 버전 |
 
 
-<br><br>
+<br>
+
+# Calibration
+| Name | Type | Description |
+| :---- | :---- |:---- |
+| focalLengthX | Double | 초첨거리 X | 
+| focalLengthY | Double | 초첨거리 Y |
+| principalX | Double | 원리좌표 X |
+| principalY | Double | 원리좌표 Y |
+| fov         | Double | 화각 |
+| imageWorldX | Double | 이미지 월드좌표 X|
+| imageWorldY | Double | 이미지 월드좌표 Y|
+| imageWorldZ | Double | 이미지 월드좌표 Z|
+| cameraPanDegree | Double | 카메라 Pan 각도 |
+| cameraTiltDegree | Double | 카메라 Pan 각도 |
+| cameraHorizontalAngle | Double | 카메라 수평각 |
+
+<br>
 
 
 <!-- # RecentCrashLogs
@@ -165,6 +182,7 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | VA_START | 비디오 분석 시작/재개 |
 | VA_STOP | 비디오 분석 중지 |
 | VA_RESET | 비디오 분석 중 누적 집계된 값들을 모두 초기화 (즉, ROI 설정 직후 상태로 초기화) |
+
 
 # Error code
 
