@@ -163,8 +163,16 @@ POST /v2/va/list-roi
   "code": 0
 }
 ```
-
-[ROI 조회](#roi-조회) 응답의 배열입니다.
+| Name | Type | Description | Required |
+| :---- | :---- |:---- |:---- |
+| rois | Array | ROI 영역 배열 | O |
+| roiId | String | ROI ID | O |
+| name | String | 영역 이름 | O |
+| roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
+| eventType | Enum | 영역 속성([EventType](models.md#EventType))| O |
+| description | String | 관심 영역 설명 | X |
+| stayTime | Integer | 발생 지연 시간 | X |
+| numberOf | Integer | 최소 발생 객체수 조건 | X |
 
 <br><br>
 
