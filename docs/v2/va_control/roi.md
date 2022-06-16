@@ -105,73 +105,6 @@ POST /v2/va/create-roi
 <br><br>
 
 # ROI 조회
-ROI를 조회합니다.
-<br>
-
-### Request
-```
-POST /v2/va/get-roi
-
-{
-  "nodeId": "c6a45bc6",
-  "channelId": "e84fcac4",
-  "roiId": "88e2a515"
-}
-```
-
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| nodeId | String | 컴퓨팅 노드 ID | O |
-| channelId | String | 채널 ID | O |
-| roiId | String | 관심 영역 ID | O |
-
-<br>
-
-### Response
-```
-{
-  "roiId": "88e2a515",
-  "name": "ROI_NAME",
-  "description": "Loitering Event",
-  "stayTime": 0.0,
-  "numberOf": 0,
-  "eventType": "EVT_LOITERING",
-  "roiDots": [
-    {
-      "x": 0.0,
-      "y": 0.0
-    },
-    {
-      "x": 1.0,
-      "y": 0.0
-    },
-    {
-      "x": 1.0,
-      "y": 1.0
-    },
-    {
-      "x": 0.0,
-      "y": 1.0
-    }
-  ],
-  "code": 0
-}
-```
-
-| Name | Type | Description | Required |
-| :---- | :---- |:---- |:---- |
-| roiNmae | String | 이벤트 이름 | O |
-| description | String | 관심 영역 설명 | O |
-| stayTime | Integer | 발생 지연 시간 | O |
-| numberOf | Integer | 최소 발생 객체수 조건 | O |
-| eventType | Enum | 영역 속성([EventType](models.md#EventType))| O |
-| roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
-| code | Integer | 오류 코드 ([Error Code](models.md#error-code)) | O|
-| message | String | 오류 메시지 |X|
-
-<br><br>
-
-# 채널 내 ROI 목록 조회
 지정한 채널에 추가 된 모든 ROI들을 조회합니다.
 
 <br>
@@ -181,7 +114,8 @@ POST /v2/va/get-roi
 POST /v2/va/list-roi
 
 {
-    "nodeId":"c6a45bc6"
+    "nodeId":"c6a45bc6",
+    "channelId":"svb90sc5"
 }
 ```
 
@@ -189,22 +123,43 @@ POST /v2/va/list-roi
 | :---- | :---- |:---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID | O |
 | channelId | String | 채널 ID | O |
-| roiId | String | 관심 영역 ID | O |
 
 <br>
 
 ### Response
 ```
 {
-  "channels": [
+  "rois": [
     {
-      "channelId": "e84fcac4",
-      "inputUri": "rtsp://192.168.0.70/vod/pertest_5m_15m_fall",
-      "channelName": "TEST_CHANNEL_NAME",
-      "inputType": 0,
-      "status": 0
+      "roiId": "7bec7522",
+      "name": "",
+      "description": "",
+      "stayTime": 0.0,
+      "numberOf": 0,
+      "eventType": 1,
+      "feature": 0,
+      "roiDots": [
+        {
+          "x": 0.03,
+          "y": 0.04
+        },
+        {
+          "x": 0.98,
+          "y": 0.04
+        },
+        {
+          "x": 0.98,
+          "y": 0.94
+        },
+        {
+          "x": 0.03,
+          "y": 0.94
+        }
+      ],
+      "code": 0
     }
   ],
+  "rpcPort": 0,
   "code": 0
 }
 ```
