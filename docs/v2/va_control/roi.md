@@ -27,7 +27,8 @@ POST /v2/va/create-roi
   "channelId": "72040f36",
   "eventType": "EVT_LOITERING",
   "roiName": "ROI_NAME",
-  "description": "Loitering Event",
+  "roiType": 2,
+  "feature": 0,
   "roiDots": [
     {
       "X": 0.0,
@@ -45,7 +46,16 @@ POST /v2/va/create-roi
       "X": 0.0,
       "Y": 1.0
     }
-  ]
+  ],
+  "EventFilter":
+    {
+      "minDetectSize": 1,
+      "maxDetectSize": 100,
+      "objectsTarget": [0]
+    },
+  "stayTime": 0,
+  "numberOf": 0,
+  "roiNumber": 0
 }
 ```
 
@@ -53,21 +63,25 @@ POST /v2/va/create-roi
 | :---- | :---- |:---- |:---- |
 | nodeId | String | 컴퓨팅 노드 ID | O |
 | channelId | String | 채널 ID | O |
+| eventType | Enum | 영역 속성([EventType](/docs/v2/models.md#event-type))| O |
 | roiName | String | 이벤트 이름 | O |
+| roiType | Enum | ROI 타입([DrawingType](#drawing-type)) | O |
+| feature | Enum | ROI 감지([ROI Feature](/docs/v2/models.md#roi-feature)) | O |
 | roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
-| eventType | Enum | 영역 속성([EventType](models.md#EventType))| O |
-| description | String | 관심 영역 설명 | X |
+| EventFilter | Enum | 객채 검출 사이즈 필터([EventFilter](#event-filter))| O |
 | stayTime | Integer | 발생 지연 시간 | X |
 | numberOf | Integer | 최소 발생 객체수 조건 | X |
+| roiNumber | Enum | 차선 종류 | O |
 
-<br/>
+<br>
 
 ### Response
 ```
 // Ok
 {
   "roiId": "88e2a515",
-  "code": 0
+  "code": 0,
+  "message": ""
 }
 // Fail
 {
@@ -79,10 +93,10 @@ POST /v2/va/create-roi
 | Name | Type | Description |
 | :---- | :---- |:---- |
 | roiId | String | 관심 영역 ID |
-| code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
+| code | Integer | 오류 코드 ([Error Code](/docs/v2/models.md#error-code)) |
 | message | String | 오류 메시지 |
 
-<br/>
+<br>
 
 ### Roi Dot
 
@@ -92,7 +106,36 @@ POST /v2/va/create-roi
 | Y | Integer | Y 좌표 | O |
 | lineUntilNextDot | JsonObject[] | 검출 객체([RoiLine](#roi-line)) | O |
 
-<br/>
+<br>
+
+<br>
+
+### Drawing Type
+
+| Name | Type | Description | Required |
+| :---- | :---- |:---- |:---- |
+| None | Integer | 없음 | O |
+| Polygon | Integer | 다각형 | O |
+| Rect | Integer | 사각형 | O |
+| Line | Integer | 라인 | O |
+| MultiLine | Integer | 멀티 라인 | O |
+| All | Integer | 전체 영역 | O |
+
+
+<br>
+
+<br>
+
+### Event Filter
+
+| Name | Type | Description | Required |
+| :---- | :---- |:---- |:---- |
+| minDetectSize | Integer | 최소 객체 크기 | O |
+| maxDetectSize | Integer | 최대 객체 크기 | O |
+| objectsTarget | enum | 검출 객체([RoiLine](#roi-line)) | O |
+
+<br>
+
 
 ### Roi Line
 
@@ -130,49 +173,60 @@ POST /v2/va/list-roi
 ```
 {
   "rois": [
-    {
-      "roiId": "7bec7522",
-      "name": "",
-      "description": "",
-      "stayTime": 0.0,
-      "numberOf": 0,
-      "eventType": 1,
-      "feature": 0,
-      "roiDots": [
+	  {
+      "EventFilter": 
         {
-          "x": 0.03,
-          "y": 0.04
+          "minDetectSize": 0
+          "maxDetectSize": 0,
+          "objectsTarget": [0]
         },
-        {
-          "x": 0.98,
-          "y": 0.04
-        },
-        {
-          "x": 0.98,
-          "y": 0.94
-        },
-        {
-          "x": 0.03,
-          "y": 0.94
+      "description": "", 
+      "eventType": "AllDetect", 
+      "feature": -3689348814741910324, 
+      "name" : "test name",
+      "numberOf": 0, 
+	    "objectTypes": [0], 
+	    "roiDots": [
+		    {
+          "x": 0.4, 
+          "y": 0.1
+        }, 
+  		  {
+          "x": 0.9, 
+          "y": 0.1
+        }, 
+		    {
+          "x": 0.9, 
+          "y": 0.6
+        }, 
+		    {
+          "x": 0.4, 
+          "y": 0.6
         }
-      ],
-      "code": 0
-    }
-  ],
-  "rpcPort": 0,
-  "code": 0
+		  ], 
+	    "roiId": "3aa26e5979b14636", 
+	    "roiNumber": 0, 
+	    "roiType": 2, 
+	    "stayTime": 0
+	  }
+  ]
 }
 ```
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | rois | Array | ROI 영역 배열 | O |
-| roiId | String | ROI ID | O |
-| name | String | 영역 이름 | O |
-| roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
-| eventType | Enum | 영역 속성([EventType](models.md#EventType))| O |
+| EventFilter | Enum | 객채 검출 사이즈 필터([EventFilter](#event-filter))| X |
 | description | String | 관심 영역 설명 | X |
-| stayTime | Integer | 발생 지연 시간 | X |
+| eventType | Enum | 영역 속성([EventType](/docs/v2/models.md#event-type))| O |
+| feature | Enum | ROI 감지([ROI Feature](/docs/v2/models.md#roi-feature)) | X |
+| name | String | 영역 이름 | O |
 | numberOf | Integer | 최소 발생 객체수 조건 | X |
+| objectTypes | Enum | 객체 종류([ClassId](/docs/v2/models.md#ClassId)) | O |
+| roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
+| roiId | String | 관심 영역 ID | O |
+| roiNumber | Enum | 차선 종류 | O |
+| roiType | Enum | ROI 타입([DrawingType](#drawing-type)) | O |
+| stayTime | Integer | 발생 지연 시간 | X |
 
 <br><br>
 
@@ -192,7 +246,13 @@ POST /v2/va/update-roi
   "nodeId": "c6a45bc6",
   "channelId": "e84fcac4",
   "roiId": "88e2a515",
+  "eventType":"AllDetect",
   "roiNmae" : "UPDATE_ROI",
+  "description": "",
+  "stayTime": 0,
+  "numberOf": 0,
+  "feature": 0,
+  "roiType": 2,
   "roiDots": [
     {
       "x": 0.0,
@@ -211,6 +271,13 @@ POST /v2/va/update-roi
       "y": 0.5
     }
   ],
+  "EventFilter":
+    {
+      "minDetectSize": 1,
+      "maxDetectSize": 100,
+      "objectsTarget": [0]
+    },
+  "roiNumber": 0
 }
 ```
 
@@ -219,13 +286,15 @@ POST /v2/va/update-roi
 | nodeId | String | 컴퓨팅 노드 ID | O |
 | channelId | String | 채널 ID | O |
 | roiId | String | 관심 영역 ID | O |
-| roiNmae | String | 이벤트 이름 | X |
+| eventType | Enum | 영역 속성([EventType](/docs/v2/models.md#event-type))| O |
+| roiName | String | 이벤트 이름 | O |
 | description | String | 관심 영역 설명 | X |
 | stayTime | Integer | 발생 지연 시간 | X |
 | numberOf | Integer | 최소 발생 객체수 조건 | X |
 | feature | string | 영역 속성([RoiFeature](#roi-feature)) | X |
-| roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | X |
-
+| roiType | Enum | ROI 타입([DrawingType](#drawing-type)) | O |
+| roiDots | JsonObject[] | ROI 라인 설정([RoiDot](#roi-dot)) | O |
+| EventFilter | Enum | 객채 검출 사이즈 필터([EventFilter](#event-filter))| O |
 
 
 <br>
@@ -233,8 +302,8 @@ POST /v2/va/update-roi
 ### Response
 ```
 {
-    "roiId": "88e2a515",
     "code": 0
+    "message" : ""
 }
 ```
 
@@ -275,14 +344,13 @@ POST /v2/va/remove-roi
 ### Response
 ```
 {
-  "roiId": "e84fcac4",
-  "code": 0
+  "code": 0,
+  "message" : ""
 }
 ```
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| roiId | String | 관심 영역 ID |
 | code | Integer | 오류 코드 ([Error Code](models.md#error-code)) |
 | message | String | 오류 메시지 |
 
