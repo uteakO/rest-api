@@ -20,7 +20,6 @@ POST /v2/va/create-computing-node
 
 {
   "host": "192.168.0.39",
-  "httpPort": 8880,
   "nodeName": "TEST_SYSTEM_PC",
   "license": "license-test-code-nkai"
 }
@@ -29,9 +28,7 @@ POST /v2/va/create-computing-node
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
 | host | String | 호스트주소 | O |
-| httpPort | Integer | HTTP 포트번호 | O |
-| rpcPort | Integer | RPC 포트번호 | O |
-| nodeName | String | 노드 닉네임 | X |
+| nodeName | String | 노드 닉네임 | O |
 | licnese | String | 라이선스 값 | O |
 
 <br>
@@ -41,21 +38,9 @@ POST /v2/va/create-computing-node
 //Ok
 {
   "nodeId": "350d8934",
-  "nodeName": "TEST_SYSTEM_PC",
-  "httpHost": "192.168.0.36",
-  "httpPort": 8880,
-  "rpcHost": "192.168.0.36",
-  "rpcPort": 33300,
-  "license": "license-test-code-nkai",
-  "productCode": "NK_API_V2",
-  "releaseDate": "2021-11-09 17:51:55",
+  "productVersion": "1.0.8.9",
+  "releaseDate": "2023.06.01"
   "code" : 0
-}
-//Already
-{
-  "nodeId": "4945bb32",
-  "message": "ComputeNode that already exists",
-  "code": 0
 }
 //Fail
 {
@@ -67,13 +52,7 @@ POST /v2/va/create-computing-node
 | Name | Type | Description | Required |
 | :---- | :---- |:---- | :----|
 | nodeId | String | 컴퓨팅 노드 ID | O |
-| nodeName | String | 컴퓨팅 노드 이름| O |
-| httpHost | String | http 호스트 | O |
-| httpPort | Integer | http 포트 | O |
-| rpcHost | String | rpc 호스트 | O |
-| rpcPort | Integer | rpc 포트 | O |
-| license | String | 라이선스 | O |
-| productCode | String | 제품 코드 | O |
+| productVersion | String | 제품 버전| O |
 | releaseDate | String | 제품 정보 | O |
 | code | Integer | 요청 응답 | O |
 | message | String | 처리 메시지 | X |
@@ -83,16 +62,12 @@ POST /v2/va/create-computing-node
 # 컴퓨팅 노드 조회하기
 ### Request
 ```
-POST /v2/va/get-computing-node
+POST /v2/va/get-computing-node {}
 
-{
-  "nodeId": "4945bb32",
-}
 ```
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- |:---- |
-| nodeId | String |노드 ID | O |
 
 
 <br>
@@ -101,15 +76,18 @@ POST /v2/va/get-computing-node
 ```
 // Ok
 {
-  "nodeId": "350d8934",
-  "nodeName": "TEST_SYSTEM_PC",
-  "httpHost": "192.168.0.36",
-  "httpPort": 8880,
-  "rpcHost": "192.168.0.36",
-  "rpcPort": 33300,
-  "license": "license-test-code-nkai",
-  "productCode": "NK_API_V2",
-  "releaseDate": "2021-11-09 17:51:55",
+  "node" : 
+  {
+    "httpHost": "192.168.0.98", 
+    "httpPort": 8880, 
+    "nodeId": "e339d131d4a6bbc5", 
+    "nodeName": "Computing Node", 
+    "productVersion": "1.0.8.9", 
+    "releaseDate": "2023.06.01", 
+    "rpcHost": "192.168.0.98", 
+    "rpcPort": 5556
+  }
+  "message": ""
   "code": 0
 }
 
@@ -122,62 +100,16 @@ POST /v2/va/get-computing-node
 
 | Name | Type | Description | Required |
 | :---- | :---- |:---- | :----|
-| nodeId | String | 컴퓨팅 노드 ID | O |
-| nodeName | String | 컴퓨팅 노드 이름| O |
 | httpHost | String | http 호스트 | O |
 | httpPort | int | http 포트 | O |
+| nodeId | String | 컴퓨팅 노드 ID | O |
+| nodeName | String | 컴퓨팅 노드 이름| O |
+| productVersion | String | 제품 버전 | O |
+| releaseDate | String | 제품 정보 | O |
 | rpcHost | String | rpc 호스트 | O |
 | rpcPort | int | rpc 포트 | O |
-| license | String | 라이선스 값 | O |
-| productCode | String | 제품 코드 | O |
-| releaseDate | String | 제품 정보 | O |
 | code | Integer | 요청 응답 | O |
 | message | String | 처리 메시지 | X |
-
-
-<br><br>
-
-
-# 컴퓨팅 노드 목록 조회하기
-모든 컴퓨팅 노드를 조회합니다.
-
-### Reqeust
-```
-POST /v2/va/list-computing-node
-
-{
-
-}
-```
-### Response
-```
-[
-  {
-    "nodeId": "350d8934",
-    "nodeName": "TEST_SYSTEM_PC",
-    "httpHost": "192.168.0.36",
-    "httpPort": 8880,
-    "rpcHost": "192.168.0.36",
-    "rpcPort": 33300,
-    "license": "license-test-code-nkai",
-    "productCode": "NK_API_V2",
-    "releaseDate": "2021-11-09 17:51:55"
-  },
-  {
-    "nodeId": "350d8934",
-    "nodeName": "TEST_SYSTEM_PC",
-    "httpHost": "192.168.0.36",
-    "httpPort": 8880,
-    "rpcHost": "192.168.0.36",
-    "rpcPort": 33300,
-    "license": "license-test-code-nkai",
-    "productCode": "NK_API_V2",
-    "releaseDate": "2021-11-09 17:51:55"
-  }
-]
-```
-
-"[컴퓨팅 노드 조회하기](#컴퓨팅-노드-조회하기)"와 동일한 응답이 배열로 반환 됩니다.
 
 
 <br><br>
@@ -190,7 +122,6 @@ POST /v2/va/update-computing-node
 {
   "nodeId": "14f502f2",
   "nodeName": "TEST_NODE",
-  "license" : "license-test-code-nkai"
 }
 ```
 
@@ -200,21 +131,20 @@ POST /v2/va/update-computing-node
 | :---- | :---- |:---- |
 | nodeId | String | 노드 ID |
 | nodeName | String | 노드 닉네임 |
-| license | String | 라이선스 값 |
 
 <br>
 
 ### Response
 ```
 {
-  "nodeId": "14f502f2",
+  "message": "",
   "code": 0
 }
 ```
 
 | Name | Type | Description |
 | :---- | :---- |:---- |
-| nodeId | String |노드 ID |
+| message | String | 처리 메시지 |
 
 
 
@@ -242,7 +172,7 @@ POST /v2/va/remove-computing-node
 ```
 //ok
 {
-  "nodeId": "14f502f2",
+  "nodeId": "4945bb32",
   "code": 0
 }
 //fail
