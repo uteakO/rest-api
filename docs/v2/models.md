@@ -1,11 +1,3 @@
----
-layout: default
-title: JSON Objects and Enums
-nav_order: 5
-parent: v2
-has_children: false
-# permalink: /docs/v2
----
 
 
 REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
@@ -19,7 +11,7 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | channelId | string | 채널 ID |
 | inputUri | string | 입력 영상 주소 |
 | channelName | string | 채널 이름 |
-| inputType | int | 입력 영상 종류(**[InputType](models.md#inputtype)**) |
+| inputType | Integer | 입력 영상 종류(**[InputType](models.md#inputtype)**) |
 | status | Enum | 채널 상태 (**[ChannelStatus](#channelstatus)**)|
 
 <br><br>
@@ -38,13 +30,10 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | Enum | Description |
 | :---- | :---- |
 | PERSON | 사람 |
-| CAR | 일반 차량 |
-| MOTOCYCLE | 오토바이 |
-| BUS | 대형 버스 |
-| TRUCK | 트럭 |
-| FLAME | 불꽃 |
-| SMOKE | 연기 |
-| FACE | 얼굴 |
+| Vehicle | 차량 |
+| Face | 얼굴 |
+| Fire | 화재 |
+| Head | 해드 |
 
 <br>
 
@@ -57,30 +46,118 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | OUTSIDE | 외부 발생 감지 |
 | IGNORE | 비감지 |
 
+# Roi Dot
+
+| Name | Type | Description | 
+| :---- | :---- |:---- |
+| x | Integer | X 좌표 | 
+| y | Integer | Y 좌표 |
+| lineUntilNextDot | JsonObject[] | 검출 객체([RoiLine](#roi-line)) |
+
+<br>
+
+# Event Filter
+
+| Name | Type | Description |
+| :---- | :---- |:---- |
+| minDetectSize | Integer | 최소 객체 크기 |
+| maxDetectSize | Integer | 최대 객체 크기 |
+| objectsTarget | enum | 검출 객체([RoiLine](#roi-line)) |
+
+<br>
+
+
+# Roi Line
+
+| Name | Type | Description |
+| :---- | :---- |:---- |
+| disable | boolean | 비활성화 | 
+| direction | String | 방향 설정 | 
+| target | JsonObject[] | 검출 객체([ObjectType](#object-type)) |
+
 <br>
 
 # EventType
 
 | Enum | Description |
 | :---- | :---- |
-| EVT_LOITERING | 배회 |
-| EVT_INTRUSION | 침입 |
-| EVT_QUEUEING | 대기열 |
-| EVT_ABNORMAL_CONGESTION | 영역 ROI 내 이동흐름 정체 (정상흐름 대비 상대적 정체도) |
-| EVT_ABNORMAL_OBJ_COUNT | 영역 ROI 내 개체밀집 (정의된 개체수 이상의 객체 존재) |
-| EVT_ROI_COUNT | 영역 ROI 카운팅 |
-| EVT_LINE_COUNT | ROI 카운팅 |
-| EVT_ILLEGAL_PARKING | 불법 주정차 |
-| EVT_WRONG_WAY | 역주행 |
-| EVT_DIRECTION_COUNTING | 방향성 이동(직전, 좌/우회전, 유턴) 카운팅 |
-| EVT_VEHICLE_SPEED | 차량 속도 |
-| EVT_VEHICLE_DENSITY | 차량 밀도 |
-| EVT_STOP_VEHICLE_COUNTING | 정지 차량 카운팅 |
-| EVT_SIGNAL_WAITING_TIME | 신호 대기 시간 |
-| EVT_PARKING_SPACE | 주차공간 점유 여부 검출 |
-| EVT_CROSSWALK_QUEUEING | 횡단보도 대기열 카운팅 |
+| Unknown | 이벤트 미발생 |
+| AllDetect | 모두 검출 |
+| Loitering | 배회 |
+| Intrusion | 침입 |
+| ~~RoiEnter~~  | [unsupported] ~~영역 진입~~ |
+| ~~AbnormalPosture~~  | [unsupported] ~~자세이상(앉음, 쓰러짐)~~ |
+| Falldown | 쓰러짐 |
+| Violence | 싸움 |
+| ~~RoiExit~~ | [unsupported] ~~영역 ROI 개체진출(사라짐)~~ |
+| ~~AbnormalCongestion~~  | [unsupported] ~~영역 ROI 내 이동흐름 정체 (정상흐름 대비 상대적 정체도)~~ |
+| ~~AbandonedObject~~  | [unsupported] ~~유기물~~ |
+| IllegalParking | 불법 주정차 |
+| AbnormalObjectCount | 영역 ROI 내 개체밀집 (정의된 개체수 이상의 객체 존재) |
+| Longstay | 영역 ROI 내 장시간 체류(주정차) |
+| LineEnter | Line ROI를 지나가는 객체감지 (Enter 방향) |
+| ~~LineExit~~ | [unsupported] ~~Line ROI를 지나가는 객체감지 (Exit 방향)~~ |
+| LineCrossing | 양방향 라인 통과 |
+| Direction | 방향성 이동 카운트 (좌, 우, 유턴 등) |
+| LeftTurn | 차량 좌회전 |
+| RightTurn | 차량 우회전 |
+| UTurn | 차량 유턴 |
+| ~~CongestionIndex~~ | [unsupported] ~~사람 혼잡도 레벨~~ |
+| ~~VehicleDensity~~ | [unsupported] ~~차량 밀도~~ |
+| ~~StopVehicleCount~~ | [unsupported] ~~정차 중인 차량 수 카운트~~ |
+| Smoke | 화재 연기 |
+| Flame | 화재 불꽃 |
+| MatchingFace | 등록 얼굴 매칭 |
+| NotWearingMask | 얼굴 마스크 미착용 |
+| NoHelmet | 헬멧 미착용 |
+| TrafficActuatedSignal | 차량 감응 신호 |
+| ~~Weapon~~ | [unsupported] ~~무기~~ |
+| NonDetectionArea | 비감지 영역 |
 
 <br><br>
+
+# ClassId
+
+| Value | Name |
+| :---- | :---- |
+| 0 | Person |
+| 2 | Falldown |
+| 3 | Violence |
+| 4 | Helmet |
+| 5 | Head |
+| 100 | Bike |
+| 102 | Vehicle |
+| 103 | Motorcycle |
+| 104 | Bus |
+| 105 | Truck |
+| 106 | Excavator |
+| 107 | TankTruck |
+| 108 | Forklift |
+| 109 | Lemicon |
+| 110 | Cultivator |
+| 111 | Tractor |
+| 112 | ElectricCar |
+| 200 | Fire Smoke |
+| 201 | Fire Flame |
+| 300 | Face |
+| 500 | Bag |
+
+<br><br>
+
+# LogType
+
+| Enum | Description |
+| :---- | :---- |
+| None | 로그 없음 |
+| Info | 일반 |
+| Debug | 디버그 |
+| Trace | 추적 |
+| Critical | 중요 |
+| Error | 오류 |
+| Warning | 경고 |
+| Event | 이벤트 |
+
+<br>
 
 # Functions
 
@@ -203,3 +280,15 @@ REST API 파라메터로 사용되는 JSON 오브젝트와 Enum들입니다.
 | 210 | 캘리브레이션 실패 |
 | 220 | 스냅샷 생성 실패 |
 | 300 | ROI 설정 실패 |
+| 400 | 쿠다 오류 |
+| 500 | 노드 삭제 오류 |
+| 501 | RTSP 포멧 오류 |
+| 502 | 시간 초과 |
+| 503 | 노드를 찾을 수 없음 |
+| 504 | ROI를 찾을 수 없음 |
+| 505 | 채널 ID를 찾을 수 없음 |
+| 506 | 비디오를 찾을 수 없음 |
+| 506 | 비디오 확장을 지원하지 않음 |
+| 507 | 얼굴 감지기가 설정되지 않음 |
+| 508 | 링크 포인트와 일치하지 않음 |
+
